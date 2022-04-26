@@ -12,7 +12,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\App;
-
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,7 +54,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 
-
+//route admin 
+Route::resource('/admin', AdminController::class);
 
 
 
