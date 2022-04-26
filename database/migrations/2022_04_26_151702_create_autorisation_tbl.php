@@ -28,6 +28,7 @@ class CreateAutorisationTbl extends Migration
             $table->string('pattante')->nullable();
             $table->text('observation')->nullable();
             $table->string('valeurlocative')->nullable();
+            $table->boolean('active')->nullable();
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ class CreateRedevableTbl extends Migration
             $table->string('cin')->nullable();
             $table->string('email')->nullable();
             $table->integer('telephone')->nullable();
+            $table->boolean('active')->nullable();
             $table->timestamps();
         });
     }

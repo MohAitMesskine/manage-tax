@@ -20,6 +20,7 @@ class CreatePayementTbl extends Migration
             $table->date('date_quittence')->nullable();
             $table->integer('annee')->nullable();
             $table->string('trim')->nullable();
+            $table->boolean('active')->nullable();
             $table->timestamps();
         });
     }
