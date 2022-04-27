@@ -14,7 +14,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.dashboard');
     }
 
     /**
@@ -46,7 +46,7 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +57,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        //
+        
     }
 
     /**

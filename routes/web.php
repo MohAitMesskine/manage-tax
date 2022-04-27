@@ -54,10 +54,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 
-//route admin 
-Route::resource('/admin', AdminController::class);
-
-
+	//route admin 
+	Route::get('/admin', [AdminController::class,'index'])->name('admin');
 
 
 

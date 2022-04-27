@@ -1,4 +1,4 @@
-@extends('inventory.layout') 
+@extends('admin.layout') 
 @section('title', 'Dashboard')
 @section('content')
     <!-- push external head elements to head -->

@@ -14,13 +14,6 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
- 	/**
-	 * The Guard implementation.
-	 *
-	 * @var Guard
-	 */
-	protected $auth;
-
 	/**
 	 * Create a new authentication controller instance.
 	 *
