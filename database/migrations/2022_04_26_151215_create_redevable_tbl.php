@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWarehousesTable extends Migration
+class CreateRedevableTbl extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateWarehousesTable extends Migration
      */
     public function up()
     {
-        Schema::create('warehouses', function (Blueprint $table) {
+        Schema::create('redevable', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->nullable();
-            $table->string('name');
-            $table->string('address')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('nom');
+            $table->string('adress')->nullable();
+            $table->string('type')->nullable();
+            $table->string('cin')->nullable();
             $table->string('email')->nullable();
-            $table->boolean('active');
+            $table->integer('telephone')->nullable();
+            $table->boolean('active')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateWarehousesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('warehouses');
+        Schema::dropIfExists('redevable');
     }
 }

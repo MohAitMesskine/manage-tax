@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrderProduct;
+use App\Models\Redevable;
 use Illuminate\Http\Request;
 
-class OrderProductController extends Controller
+class RedevableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class OrderProductController extends Controller
      */
     public function index()
     {
-        //
+        $redevables = Redevable::orderBy('updated_at', 'DESC')->paginate(2);
+        return view('admin.redevable.index', compact('redevables'));
     }
 
     /**
@@ -41,10 +42,10 @@ class OrderProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\OrderProduct  $orderProduct
+     * @param  \App\Models\Redevable  $redevable
      * @return \Illuminate\Http\Response
      */
-    public function show(OrderProduct $orderProduct)
+    public function show(Redevable $redevable)
     {
         //
     }
@@ -52,10 +53,10 @@ class OrderProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\OrderProduct  $orderProduct
+     * @param  \App\Models\Redevable  $redevable
      * @return \Illuminate\Http\Response
      */
-    public function edit(OrderProduct $orderProduct)
+    public function edit(Redevable $redevable)
     {
         //
     }
@@ -64,10 +65,10 @@ class OrderProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\OrderProduct  $orderProduct
+     * @param  \App\Models\Redevable  $redevable
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrderProduct $orderProduct)
+    public function update(Request $request, Redevable $redevable)
     {
         //
     }
@@ -75,10 +76,10 @@ class OrderProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\OrderProduct  $orderProduct
+     * @param  \App\Models\Redevable  $redevable
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OrderProduct $orderProduct)
+    public function destroy(Redevable $redevable)
     {
         //
     }

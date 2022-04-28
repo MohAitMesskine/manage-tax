@@ -9,15 +9,17 @@ use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+	/**
+	 * Create a new authentication controller instance.
+	 *
+	 * @param  Guard  $auth
+	 * @return void
+	 */
     public function __construct()
     {
         $this->middleware('auth');
