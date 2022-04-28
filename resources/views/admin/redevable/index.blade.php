@@ -1,5 +1,5 @@
-@extends('inventory.layout')
-@section('title', 'Products')
+@extends('admin.layout')
+@section('title', 'Redevables')
 @section('content')
 
 	<div class="container-fluid">
@@ -9,8 +9,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-headphones bg-green"></i>
                         <div class="d-inline">
-                            <h5>Products</h5>
-                            <span>View, delete and update products</span>
+                            <h5>Redevables</h5>
+                            <span>View, delete and update redevables</span>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                                 <a href="/dashboard"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Products</a>
+                                <a href="#">Redevables</a>
                             </li>
                         </ol>
                     </nav>
@@ -94,8 +94,8 @@
 		                </div>
 		                <div class="col col-sm-5">
 		                    <div class="card-options text-right">
-                                @can('product_create')
-			                    <a href="{{url('products/create')}}" class=" btn btn-outline-primary btn-semi-rounded ">Add Product</a>
+                                @can('redevable_create')
+			                    <a href="{{url('redevables/create')}}" class=" btn btn-outline-primary btn-semi-rounded ">Add Redevable</a>
                                 @endcan
                             </div>
 		                </div>
@@ -122,33 +122,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($products as $product)
+                                    @foreach ($redevables as $redevable)
                                     <tr>
                                         <td>
                                             <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input select_all_child" id="" name="id" value="{{ $product->id }}">
+                                                <input type="checkbox" class="custom-control-input select_all_child" id="" name="id" value="{{ $redevable->id }}">
                                                 <span class="custom-control-label">&nbsp;</span>
                                             </label>
                                         </td>
                                         <td>
-                                            <img src="{{ $product->getFirstMediaUrl('products', 'thumb') }}" onerror="this.src='/img/notfound/50.webp'" class="table-user-thumb" alt="">
+                                            <img src="{{ $redevable->getFirstMediaUrl('redevables', 'thumb') }}" onerror="this.src='/img/notfound/50.webp'" class="table-user-thumb" alt="">
                                         </td>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->sku }}</td>
-                                        <td>{{ $product->category->name }}</td>
-                                        <td>{{ $product->price }}</td>
-                                        <td>{{ $product->cost }}</td>
-                                        <td>{{ $product->quantity }}</td>
+                                        <td>{{ $redevable->name }}</td>
+                                        <td>{{ $redevable->sku }}</td>
+                                        <td>{{ $redevable->category->name }}</td>
+                                        <td>{{ $redevable->price }}</td>
+                                        <td>{{ $redevable->cost }}</td>
+                                        <td>{{ $redevable->quantity }}</td>
                                         <td>
 
-                                            @can('product_show')
-                                            <a href="#productView" onclick="show_product(this)" data-attr="{{ route('products.getproduct', $product->id) }}" data-toggle="modal" data-target="#productView"><i class="ik ik-eye f-16 mr-15"></i></a>
+                                            @can('redevable_show')
+                                            <a href="#redevableView" onclick="show_redevable(this)" data-attr="{{ route('redevables.getredevable', $redevable->id) }}" data-toggle="modal" data-target="#redevableView"><i class="ik ik-eye f-16 mr-15"></i></a>
                                             @endcan
-                                            @can('product_edit')
-                                            <a href="{{ route('products.edit', $product->id) }}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+                                            @can('redevable_edit')
+                                            <a href="{{ route('redevables.edit', $redevable->id) }}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
                                             @endcan
-                                            @can('product_delete')
-                                            <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline-block;">
+                                            @can('redevable_delete')
+                                            <form action="{{ route('redevables.destroy', $redevable->id) }}" method="POST" style="display: inline-block;">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn bg-transparent" style="display: contents" ><i class="ik ik-trash-2 f-16 text-red"></i></button>
@@ -160,7 +160,7 @@
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-center">
-                                {{ $products->links() }}
+                                {{ $redevables->links() }}
                             </div>
                         </div>
 		            </div>
@@ -170,19 +170,19 @@
             <!-- list layout 2 end -->
 		</div>
 	</div>
-	<div class="modal fade edit-layout-modal pr-0" id="productView" tabindex="-1" role="dialog" aria-labelledby="productViewLabel" aria-hidden="true">
+	<div class="modal fade edit-layout-modal pr-0" id="redevableView" tabindex="-1" role="dialog" aria-labelledby="redevableViewLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="productViewLabel">Iphone 6</h5>
+                <h5 class="modal-title" id="redevableViewLabel">Iphone 6</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
 
             <div class="modal-body">
-                <div id="product-spinner" style="text-align: center;margin: auto;">
+                <div id="redevable-spinner" style="text-align: center;margin: auto;">
                     <i class="ace-icon fa fa-spinner fa-spin orange bigger-500" style="font-size:60px;margin-top:50px;"></i>
                 </div>
-                <div id="product-content"  style="display: none">
+                <div id="redevable-content"  style="display: none">
 
                 </div>
             </div>
@@ -192,28 +192,28 @@
 
 	@push('script')
         <script>
-            function show_product(e) {
+            function show_redevable(e) {
                 $.ajax({
                     url: e.getAttribute('data-attr'),
                     beforeSend: function() {
-                        $('#product-spinner').show();
-                        $('#product-content').hide();
-                        //product-content
-                        //product-spinner
+                        $('#redevable-spinner').show();
+                        $('#redevable-content').hide();
+                        //redevable-content
+                        //redevable-spinner
                     },
                     // return the result
                     success: function(result) {
-                        $('#product-spinner').hide();
-                        $('#product-content').html(result).show();
-                        product_line_chart();
+                        $('#redevable-spinner').hide();
+                        $('#redevable-content').html(result).show();
+                        redevable_line_chart();
                     },
                     complete: function() {
-                        $('#product-spinner').hide();
+                        $('#redevable-spinner').hide();
                     },
                     error: function(jqXHR, testStatus, error) {
                         console.log(error);
                         alert("Page " + href + " cannot open. Error:" + error);
-                        $('#product-spinner').hide();
+                        $('#redevable-spinner').hide();
                     },
                     timeout: 8000
                 })
@@ -227,6 +227,6 @@
         <script src="{{ asset('plugins/amcharts/pie.js') }}"></script>
         <script src="{{ asset('plugins/ammap3/ammap/ammap.js') }}"></script>
         <script src="{{ asset('plugins/ammap3/ammap/maps/js/usaLow.js') }}"></script>
-        <script src="{{ asset('js/product.js') }}"></script>
+        <script src="{{ asset('js/redevable.js') }}"></script>
     @endpush
 @endsection

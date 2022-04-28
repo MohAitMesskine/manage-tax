@@ -9,11 +9,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\PayementController;
+use App\Http\Controllers\RedevableController;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,11 +54,17 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 	//route admin 
-	Route::get('/admin', [AdminController::class,'index'])->name('admin');
+	Route::get('/admin', [HomeController::class,'index'])->name('admin');
 
+	//route redevable
+	Route::get('/redevables', [RedevableController::class,'index'])->name('redevables.index');
+	Route::get('/redevables/create', [RedevableController::class,'create'])->name('redevables.create');
+	Route::post('/redevables/store', [RedevableController::class,'store'])->name('redevables.store');
+	Route::get('/redevables/edit/{id}', [RedevableController::class,'edit'])->name('redevables.edit');
+	Route::put('/redevables/{id}/update', [RedevableController::class,'update'])->name('redevables.update');
+	Route::get('/redevables/{id}', [RedevableController::class,'destroy'])->name('redevables.destroy');
 
-
-
+	//route payement 
 
 
 
@@ -80,17 +85,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 
-    // purchases
-    Route::resource('purchases', PurchaseController::class);
-
-	/*Route::get('/purchases', function () { return view('inventory.purchase.list'); });
-	Route::get('/purchases/create', function () { return view('inventory.purchase.create'); });*/
-
 
     // products
-    Route::resource('products', ProductController::class);
-	Route::get('/products/getproduct/{id}', [ProductController::class,'getproduct'])->name('products.getproduct');
-
 	/*Route::get('/products', [ProductController::class,'index'])->name('products.index');
 	Route::get('/products/create', [ProductController::class,'create'])->name('products.create');
 	Route::post('/products/store', [ProductController::class,'store'])->name('products.store');

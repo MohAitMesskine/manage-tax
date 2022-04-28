@@ -14,7 +14,7 @@ class PayementController extends Controller
      */
     public function index()
     {
-        //
+         dd(Payement::all());
     }
 
     /**

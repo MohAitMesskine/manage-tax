@@ -18,19 +18,12 @@
 	    		<!-- yeild contents here -->
 	    		@yield('content')
 	    	</div>
-
-	    	<!-- initiate chat section-->
-	    	@include('admin.include.chat')
-
-
+			
 	    	<!-- initiate footer section-->
 	    	@include('admin.include.footer')
 
     	</div>
     </div>
-
-	<!-- initiate modal menu section-->
-	@include('admin.include.modalmenu')
 
 	<!-- initiate scripts-->
 	@include('admin.include.script')

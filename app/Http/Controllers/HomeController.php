@@ -6,14 +6,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        //taki
-        return view('home');
+        return view('admin.dashboard');
     }
 
     public function clearCache()
     {
         \Artisan::call('cache:clear');
 
-        return view('clear-cache');
+        return view('admin.clear-cache');
     }
 }

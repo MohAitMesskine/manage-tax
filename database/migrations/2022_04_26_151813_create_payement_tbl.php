@@ -16,6 +16,7 @@ class CreatePayementTbl extends Migration
         Schema::create('payement', function (Blueprint $table) {
             $table->id();
             $table->date('date')->nullable();
+            $table->bigInteger('autorisation_id')->unsigned();
             $table->string('quittence')->nullable();
             $table->date('date_quittence')->nullable();
             $table->integer('annee')->nullable();

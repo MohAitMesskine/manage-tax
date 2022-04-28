@@ -16,6 +16,7 @@ class CreateAutorisationTbl extends Migration
         Schema::create('autorisation', function (Blueprint $table) {
             $table->id();
             $table->string('numero')->nullable()->unique();
+            $table->bigInteger('redevable_id')->unsigned();
             $table->date('date')->nullable();
             $table->string('type')->nullable();
             $table->string('rc')->nullable();
