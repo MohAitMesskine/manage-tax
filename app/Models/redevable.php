@@ -9,4 +9,9 @@ class Redevable extends Model
 {
     use HasFactory;
     protected $table = 'redevable';
+    //public $primaryKey = 'npro';
+    
+    protected $fillable = [ 
+        'nom','adress','type','cin','email','telephone','active'
+    ];
 }

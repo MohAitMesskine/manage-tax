@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title', 'Redevables')
+@section('title', 'Payement')
 @section('content')
 
 	<div class="container-fluid">
@@ -9,8 +9,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-headphones bg-green"></i>
                         <div class="d-inline">
-                            <h5>Redevables</h5>
-                            <span>View, Supprimer and changer Redevable </span>
+                            <h5>Payement</h5>
+                            <span>View, Crer un payement </span>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                                 <a href="/dashboard"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Redevables</a>
+                                <a href="#">Payement</a>
                             </li>
                         </ol>
                     </nav>
@@ -46,50 +46,39 @@
 
 		                </div>
 
-                                <form action="{{ route('redevables.store',$redevable->id) }}" method="POST" class="forms-sample  col-form-label">
+                                <form action="{{ route('payement.store') }}" method="POST" class="forms-sample  col-form-label">
                                     @csrf
-                                    @method('PUT')
                                     <div class="form-group row">
-                                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nom</label>
+                                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">date	</label>
                                         <div class="col-sm-9">
-                                            <input type="text" value="{{ $redevable->nom}}" class="form-control"  >
+                                            <input type="date" class="form-control"  placeholder="Saisir La date">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Adress</label>
+                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">quittence</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" value="{{ $redevable->adress}}">
+                                            <input type="text" class="form-control"  placeholder="Votre quittence">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Type</label>
+                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">	date_quittence</label>
                                         <div class="col-sm-9">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected value="{{ $redevable->type}}"></option>
-                                        <option value="taxi">taxi</option>
-                                        <option value="societe">societe</option>
-                                        <option value="personne">personne</option>
-                                      </select>
-                                    </div>
-                                </div>
-                                    <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">CNE</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" value="{{ $redevable->cne}}" class="form-control">
+                                            <input type="date" class="form-control" placeholder="Saisir La date De quittance">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Email</label>
+                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">L'année</label>
                                         <div class="col-sm-9">
-                                            <input type="email" value="{{ $redevable->email}}" class="form-control">
+                                            <input type="number" class="form-control" placeholder="Saisir L`annnée">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Telephone</label>
+                                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">	Trimestre</label>
                                         <div class="col-sm-9">
-                                            <input type="tel" class="form-control" value="{{ $redevable->telephone}}" >
+                                            <input type="text" class="form-control"  placeholder="Saisir Le trim">
                                         </div>
                                     </div>
+                                   
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                     <button class="btn btn-light">Cancel</button>
                                 </form>

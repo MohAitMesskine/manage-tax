@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payement;
+use Faker\Provider\ar_EG\Payment;
 use Illuminate\Http\Request;
 
 class PayementController extends Controller
@@ -14,7 +15,9 @@ class PayementController extends Controller
      */
     public function index()
     {
-         dd(Payement::all());
+        // Payement::all();
+        $payement = Payement::orderBy('updated_at', 'DESC')->paginate(2);
+        return view('admin.payement.index', compact('payement'));
     }
 
     /**
@@ -25,6 +28,7 @@ class PayementController extends Controller
     public function create()
     {
         //
+        return view('admin.payement.create');
     }
 
     /**
@@ -36,6 +40,14 @@ class PayementController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'id' => 'required'
+        ]);
+
+       Payement::create($request->all());
+
+        return redirect()->route('admin.payement.index')
+                        ->with('success','Redevable created successfully.');
     }
 
     /**
@@ -81,5 +93,9 @@ class PayementController extends Controller
     public function destroy(Payement $payement)
     {
         //
+        $payement->delete();
+    
+        return redirect()->route('payement.index')
+                        ->with('success','Produit supprimé avec succès');
     }
 }

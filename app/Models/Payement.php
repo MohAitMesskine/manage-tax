@@ -9,4 +9,7 @@ class Payement extends Model
 {
     use HasFactory;
     protected $table = 'payement';
+    protected $fillable = [ 
+        'id'
+    ];
 }

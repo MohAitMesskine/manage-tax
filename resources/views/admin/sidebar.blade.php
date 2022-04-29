@@ -2,7 +2,7 @@
     <div class="sidebar-header">
         <a class="header-brand" href="{{route('dashboard')}}">
             <div class="logo-img">
-               <img height="30" src="{{ asset('img/logo_white.png')}}" class="header-brand-img" title="RADMIN">
+               <img height="30" width="160px" src="{{ asset('img/logo.png')}}" class="header-brand-img" title="RADMIN">
             </div>
         </a>
         <div class="sidebar-action"><i class="ik ik-arrow-left-circle"></i></div>
@@ -22,9 +22,16 @@
                 </div>
 
                 <!-- start admin pages -->
-                
+                {{-- admin redevable --}}
 
 
+                            <div class="nav-item {{ ($segment2 == 'inventory') ? 'active' : '' }}">
+                                <a href="{{route('redevables.index')}}"><i class="ik ik-bar-chart-2"></i><span>{{ __('Redevable')}}</span></a>
+                            </div>
+                            {{-- admin payement --}}
+                             <div class="nav-item {{ ($segment2 == 'inventory') ? 'active' : '' }}">
+                                <a href="{{route('payement.index')}}"><i class="ik ik-bar-chart-2"></i><span>{{ __('Payement')}}</span></a>
+                            </div>
 
                 <!-- end admin pages -->
 

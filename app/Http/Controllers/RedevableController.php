@@ -26,6 +26,7 @@ class RedevableController extends Controller
     public function create()
     {
         //
+        return view('admin.redevable.create');
     }
 
     /**
@@ -37,6 +38,21 @@ class RedevableController extends Controller
     public function store(Request $request)
     {
         //
+         $request->validate([
+            'id' => 'required',
+            'nom' => 'required|max:255',
+            'adress' => 'null|max:255',
+            'type' => 'null|max:255',
+            'cin' => 'null|max:255',
+            'email' => 'null|max:255',
+            'telephone' => 'null',
+
+        ]);
+
+       Redevable::create($request->all());
+
+        return redirect()->route('redevables.index')
+                        ->with('success','Redevable created successfully.');
     }
 
     /**
@@ -48,6 +64,7 @@ class RedevableController extends Controller
     public function show(Redevable $redevable)
     {
         //
+        return view('admin.redevables.show',compact('redevables'));
     }
 
     /**
@@ -59,6 +76,7 @@ class RedevableController extends Controller
     public function edit(Redevable $redevable)
     {
         //
+        return view('admin.redevable.edit',compact('redevable'));
     }
 
     /**
@@ -71,6 +89,15 @@ class RedevableController extends Controller
     public function update(Request $request, Redevable $redevable)
     {
         //
+        $request->validate([
+            'id' => 'required',
+            
+        ]);
+    
+        $redevable->update($request->all());
+    
+        return redirect()->route('admin.redevables.index')
+                        ->with('success','redevable mis à jour avec succès');
     }
 
     /**
@@ -80,7 +107,12 @@ class RedevableController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Redevable $redevable)
-    {
+
+   {
         //
+        $redevable->delete();
+    
+        return redirect()->route('admin.redevables.index')
+                        ->with('success','Redevables supprimé avec succès');
     }
 }

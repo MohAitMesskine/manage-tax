@@ -53,7 +53,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 
-	//route admin 
+	//route admin
 	Route::get('/admin', [HomeController::class,'index'])->name('admin');
 
 	//route redevable
@@ -64,12 +64,17 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::put('/redevables/{id}/update', [RedevableController::class,'update'])->name('redevables.update');
 	Route::get('/redevables/{id}', [RedevableController::class,'destroy'])->name('redevables.destroy');
 
-	//route payement 
+	//route payement
+	Route::get('/payement', [PayementController::class,'index'])->name('payement.index');
+	Route::get('/payement/create', [PayementController::class,'create'])->name('payement.create');
+	Route::post('/payement/store', [PayementController::class,'store'])->name('payement.store');
+	Route::get('/payement/edit/{id}', [PayementController::class,'edit'])->name('payement.edit');
+	Route::put('/payement/{id}/update', [PayementController::class,'update'])->name('payement.update');
+	Route::get('/payement/{id}', [PayementController::class,'destroy'])->name('payement.destroy');
 
 
 
 
-	
 	// logout route
 	Route::get('/logout', [LoginController::class,'logout']);
 	Route::get('/clear-cache', [HomeController::class,'clearCache']);

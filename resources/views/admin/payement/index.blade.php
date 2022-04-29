@@ -9,8 +9,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-headphones bg-green"></i>
                         <div class="d-inline">
-                            <h5>Redevables</h5>
-                            <span>View, delete and update redevables</span>
+                            <h5>Payement</h5>
+                            <span>View, delete and update Payement</span>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                                 <a href="/dashboard"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Redevables</a>
+                                <a href="#">Payement</a>
                             </li>
                         </ol>
                     </nav>
@@ -95,7 +95,7 @@
 		                <div class="col col-sm-5">
 		                    <div class="card-options text-right">
                                 @can('redevable_create')
-			                    <a href="{{url('redevables/create')}}" class=" btn btn-outline-primary btn-semi-rounded ">Add Redevable</a>
+			                    <a href="{{url('payement/create')}}" class=" btn btn-outline-primary btn-semi-rounded ">Ajouter Payement</a>
                                 @endcan
                             </div>
 		                </div>
@@ -112,17 +112,17 @@
                                             </label>
                                         </th>
 
-                                        <th>Nom</th>
-                                        <th>Adress</th>
-                                        <th>Type</th>
-                                        <th>CIN</th>
-                                        <th>Email</th>
-                                        <th>Telephone</th>
+
+                                        <th>date</th>
+                                        <th>quittence</th>
+                                        <th>date_quittence</th>
+                                        <th>annee</th>
+                                        <th>trim</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($redevables as $redevable)
+                                    @foreach ($payement as $payement)
                                     <tr>
                                         <td>
                                             <label class="custom-control custom-checkbox">
@@ -131,22 +131,21 @@
                                             </label>
                                         </td>
 
-                                        <td>{{ $redevable->nom }}</td>
-                                        <td>{{ $redevable->adress}}</td>
-                                        <td>{{ $redevable->type }}</td>
-                                        <td>{{ $redevable->cne }}</td>
-                                        <td>{{ $redevable->email }}</td>
-                                        <td>{{ $redevable->telephone}}</td>
+                                        <td>{{ $payement->date }}</td>
+                                        <td>{{ $payement->quittence}}</td>
+                                        <td>{{ $payement->date_quittence }}</td>
+                                        <td>{{ $payement->annee }}</td>
+                                        <td>{{ $payement->trim }}</td>
                                         <td>
 
                                             {{-- @can('redevable_show')
                                             <a href="#redevableView" onclick="show_redevable(this)" data-attr="{{ route('redevables.getredevable', $redevable->id) }}" data-toggle="modal" data-target="#redevableView"><i class="ik ik-eye f-16 mr-15"></i></a>
                                             @endcan --}}
                                             @can('redevable_edit')
-                                            <a href="{{ route('redevables.edit', $redevable->id) }}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+                                            <a href="{{ route('payement.edit', $redevable->id) }}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
                                             @endcan
                                             @can('redevable_delete')
-                                            <form action="{{ route('redevables.destroy', $redevable->id) }}" method="POST" style="display: inline-block;">
+                                            <form action="{{ route('payement.destroy', $redevable->id) }}" method="POST" style="display: inline-block;">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn bg-transparent" style="display: contents" ><i class="ik ik-trash-2 f-16 text-red"></i></button>
@@ -158,7 +157,7 @@
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-center">
-                                {{ $redevables->links() }}
+                                {{ $payement->links() }}
                             </div>
                         </div>
 		            </div>
