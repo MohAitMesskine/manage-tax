@@ -7,7 +7,7 @@
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                        <i class="ik ik-headphones bg-green"></i>
+                        <i class="ik ik-user"></i>
                         <div class="d-inline">
                             <h5>Redevables</h5>
                             <span>Créer un Redevables </span>
@@ -21,7 +21,7 @@
                                 <a href="/dashboard"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Redevables</a>
+                                <a href="{{ route('redevables.index') }}">Redevables</a>
                             </li>
                         </ol>
                     </nav>
@@ -39,7 +39,7 @@
 		                <div class="col col-sm-1">
 		                    <div class="card-options d-inline-block">
 		                        <div class="dropdown d-inline-block">
-		                            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-more-horizontal"></i></a>
+		                            {{-- <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-more-horizontal"></i></a> --}}
 
 		                        </div>
 		                    </div>
@@ -49,44 +49,45 @@
                                 <form action="{{ route('redevables.store') }}" method="POST" class="forms-sample  col-form-label">
                                     @csrf
                                     <div class="form-group row">
-                                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nom</label>
+                                        <label  class="col-sm-3 col-form-label">Nom</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control"  placeholder="Votre Nom">
+                                            <input type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" class="form-control"  placeholder="Votre Nom" required autofocus>
+
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Adress</label>
+                                        <label  class="col-sm-3 col-form-label">Adress</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control"  placeholder="Votre Adresse(R/ville/Region)">
+                                            <input type="text" name="adress" class="form-control"  placeholder="Votre Adresse(R/ville/Region)">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Type</label>
+                                        <label  class="col-sm-3 col-form-label">Type</label>
                                         <div class="col-sm-9">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select name="type" class="form-select" aria-label="Default select example">
                                         <option selected>taxi</option>
-                                        <option value="taxi">taxi</option>
-                                        <option value="societe">societe</option>
+
+                                        <option value="societe">sociéte</option>
                                         <option value="personne">personne</option>
                                       </select>
                                     </div>
                                 </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">CNE</label>
+                                        <label class="col-sm-3 col-form-label">CIN</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="Votre CNE">
+                                            <input type="text" name="cin" class="form-control" placeholder="Votre CNE">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Email</label>
+                                        <label  class="col-sm-3 col-form-label">Email</label>
                                         <div class="col-sm-9">
-                                            <input type="email" class="form-control"  placeholder="Votre Email">
+                                            <input type="email" name="email" class="form-control"  placeholder="Votre Email">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Telephone</label>
+                                        <label  class="col-sm-3 col-form-label">Telephone</label>
                                         <div class="col-sm-9">
-                                            <input type="tel" class="form-control"  placeholder="Votre Telephone">
+                                            <input type="tel" name="telephone" class="form-control"  placeholder="Votre Telephone">
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>

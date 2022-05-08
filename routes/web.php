@@ -11,6 +11,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PayementController;
 use App\Http\Controllers\RedevableController;
+use App\Http\Controllers\AutorisationController;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 /*
@@ -55,22 +56,15 @@ Route::group(['middleware' => 'auth'], function(){
 
 	//route admin
 	Route::get('/admin', [HomeController::class,'index'])->name('admin');
-
 	//route redevable
-	Route::get('/redevables', [RedevableController::class,'index'])->name('redevables.index');
-	Route::get('/redevables/create', [RedevableController::class,'create'])->name('redevables.create');
-	Route::post('/redevables/store', [RedevableController::class,'store'])->name('redevables.store');
-	Route::get('/redevables/edit/{id}', [RedevableController::class,'edit'])->name('redevables.edit');
-	Route::put('/redevables/{id}/update', [RedevableController::class,'update'])->name('redevables.update');
-	Route::get('/redevables/{id}', [RedevableController::class,'destroy'])->name('redevables.destroy');
-
+    Route::resource('redevables', RedevableController::class);
+    Route::get('/search', [RedevableController::class,'search'])->name('search');
 	//route payement
-	Route::get('/payement', [PayementController::class,'index'])->name('payement.index');
-	Route::get('/payement/create', [PayementController::class,'create'])->name('payement.create');
-	Route::post('/payement/store', [PayementController::class,'store'])->name('payement.store');
-	Route::get('/payement/edit/{id}', [PayementController::class,'edit'])->name('payement.edit');
-	Route::put('/payement/{id}/update', [PayementController::class,'update'])->name('payement.update');
-	Route::get('/payement/{id}', [PayementController::class,'destroy'])->name('payement.destroy');
+    Route::resource('payement', PayementController::class);
+    Route::get('/recherche', [PayementController::class,'search'])->name('recherche');
+    //route autorisation :
+    Route::resource('autorisation', AutorisationController::class);
+    Route::get('/search', [AutorisationController::class,'search'])->name('search');
 
 
 

@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title', 'Redevables')
+@section('title', 'Payement')
 @section('content')
 
 	<div class="container-fluid">
@@ -10,7 +10,7 @@
                         <i class="ik ik-headphones bg-green"></i>
                         <div class="d-inline">
                             <h5>Payement</h5>
-                            <span>View, delete and update Payement</span>
+                            <span>View, Voir les payement</span>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
 		                <div class="col col-sm-1">
 		                    <div class="card-options d-inline-block">
 		                        <div class="dropdown d-inline-block">
-		                            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-more-horizontal"></i></a>
+		                            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 		                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="moreDropdown">
 		                                <a class="dropdown-item" href="#">Delete</a>
 		                                <a class="dropdown-item" href="#">More Action</a>
@@ -50,46 +50,19 @@
 		                </div>
 		                <div class="col col-sm-6">
 		                    <div class="card-search with-adv-search dropdown">
-		                        <form action="">
-		                            <input type="text" class="form-control global_filter" id="global_filter" placeholder="Search.." required="">
-		                            <button type="submit" class="btn btn-icon"><i class="ik ik-search"></i></button>
-		                            <button type="button" id="adv_wrap_toggler_1" class="adv-btn ik ik-chevron-down dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-		                            <div class="adv-search-wrap dropdown-menu dropdown-menu-right" aria-labelledby="adv_wrap_toggler_1">
-		                                <div class="row">
-		                                    <div class="col-md-12">
-		                                        <div class="form-group">
-		                                            <input type="text" class="form-control column_filter" id="col0_filter" placeholder="Title" data-column="0">
-		                                        </div>
-		                                    </div>
-		                                    <div class="col-md-6">
-		                                        <div class="form-group">
-		                                            <input type="text" class="form-control column_filter" id="col1_filter" placeholder="Price" data-column="1">
-		                                        </div>
-		                                    </div>
-		                                    <div class="col-md-6">
-		                                        <div class="form-group">
-		                                            <input type="text" class="form-control column_filter" id="col2_filter" placeholder="SKU" data-column="2">
-		                                        </div>
-		                                    </div>
-		                                    <div class="col-md-4">
-		                                        <div class="form-group">
-		                                            <input type="text" class="form-control column_filter" id="col3_filter" placeholder="Qty" data-column="3">
-		                                        </div>
-		                                    </div>
-		                                    <div class="col-md-4">
-		                                        <div class="form-group">
-		                                            <input type="text" class="form-control column_filter" id="col4_filter" placeholder="Category" data-column="4">
-		                                        </div>
-		                                    </div>
-		                                    <div class="col-md-4">
-		                                        <div class="form-group">
-		                                            <input type="text" class="form-control column_filter" id="col5_filter" placeholder="Tag" data-column="5">
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                <button class="btn btn-theme">Search</button>
-		                            </div>
-		                        </form>
+                                <div class="input-group mb-3">
+                                    <form action="{{ route('recherche') }}" method="GET">
+                                        <div class="card-search with-adv-search dropdown">
+                                            <div class="input-group mb-3">
+
+                                                    <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" required />
+                                                    <button type="submit"class="input-group-text border-0" id="search-addon">
+                                                      <i class="fas fa-search"></i>
+                                                    </button>
+                                                </form>
+                                              </div>
+                                        </div>
+                                  </div>
 		                    </div>
 		                </div>
 		                <div class="col col-sm-5">
@@ -112,7 +85,7 @@
                                             </label>
                                         </th>
 
-
+                                        <th>numero Autorisation</th>
                                         <th>date</th>
                                         <th>quittence</th>
                                         <th>date_quittence</th>
@@ -122,30 +95,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($payement as $payement)
+                                    @foreach ($payement as $payements)
                                     <tr>
-                                        <td>
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input select_all_child" id="" name="id" value="{{ $redevable->id }}">
-                                                <span class="custom-control-label">&nbsp;</span>
-                                            </label>
-                                        </td>
+                                       <td></td>
+                                        <td>{{$payements->numero}}</td>
 
-                                        <td>{{ $payement->date }}</td>
-                                        <td>{{ $payement->quittence}}</td>
-                                        <td>{{ $payement->date_quittence }}</td>
-                                        <td>{{ $payement->annee }}</td>
-                                        <td>{{ $payement->trim }}</td>
+
+                                        <td>{{ $payements->date }}</td>
+                                        <td>{{ $payements->quittence}}</td>
+                                        <td>{{ $payements->date_quittence }}</td>
+                                        <td>{{ $payements->annee }}</td>
+                                        <td>{{ $payements->trim }}</td>
                                         <td>
 
                                             {{-- @can('redevable_show')
                                             <a href="#redevableView" onclick="show_redevable(this)" data-attr="{{ route('redevables.getredevable', $redevable->id) }}" data-toggle="modal" data-target="#redevableView"><i class="ik ik-eye f-16 mr-15"></i></a>
                                             @endcan --}}
                                             @can('redevable_edit')
-                                            <a href="{{ route('payement.edit', $redevable->id) }}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+                                            <a href="{{ route('payement.edit', $payements->id) }}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
                                             @endcan
                                             @can('redevable_delete')
-                                            <form action="{{ route('payement.destroy', $redevable->id) }}" method="POST" style="display: inline-block;">
+                                            <form action="{{ route('payement.destroy', $payements->id) }}" method="POST" style="display: inline-block;">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn bg-transparent" style="display: contents" ><i class="ik ik-trash-2 f-16 text-red"></i></button>
@@ -157,7 +127,7 @@
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-center">
-                                {{ $payement->links() }}
+                                {{ $pay->links() }}
                             </div>
                         </div>
 		            </div>
@@ -216,6 +186,16 @@
                 })
             }
         </script>
+          <script>
+            $(document).ready(function(){
+              $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#advanced_table tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+            });
+            </script>
         <script src="{{ asset('plugins/amcharts/amcharts.js') }}"></script>
         <script src="{{ asset('plugins/amcharts/gauge.js') }}"></script>
         <script src="{{ asset('plugins/amcharts/serial.js') }}"></script>

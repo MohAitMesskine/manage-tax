@@ -7,10 +7,10 @@
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                        <i class="ik ik-headphones bg-green"></i>
+                       <i class="ik ik-user"></i>
                         <div class="d-inline">
                             <h5>Redevables</h5>
-                            <span>View, Supprimer and changer Redevable </span>
+                            <span>View, changer Redevable </span>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                                 <a href="/dashboard"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Redevables</a>
+                                <a href="{{ route('redevables.index') }}">Redevables</a>
                             </li>
                         </ol>
                     </nav>
@@ -39,33 +39,32 @@
 		                <div class="col col-sm-1">
 		                    <div class="card-options d-inline-block">
 		                        <div class="dropdown d-inline-block">
-		                            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-more-horizontal"></i></a>
-
+		                          
 		                        </div>
 		                    </div>
 
 		                </div>
 
-                                <form action="{{ route('redevables.store',$redevable->id) }}" method="POST" class="forms-sample  col-form-label">
-                                    @csrf
-                                    @method('PUT')
+                        <form class="forms-sample  col-form-label" action="{{ route('redevables.update',$redevable->id) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
                                     <div class="form-group row">
-                                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nom</label>
+                                        <label  class="col-sm-3 col-form-label">Nom</label>
                                         <div class="col-sm-9">
-                                            <input type="text" value="{{ $redevable->nom}}" class="form-control"  >
+                                            <input type="text" name="nom" value="{{ $redevable->nom}}" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Adress</label>
+                                        <label  class="col-sm-3 col-form-label">Adress</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" value="{{ $redevable->adress}}">
+                                            <input type="text" name="adress" class="form-control" value="{{ $redevable->adress}}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Type</label>
+                                        <label  class="col-sm-3 col-form-label">Type</label>
                                         <div class="col-sm-9">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected value="{{ $redevable->type}}"></option>
+                                    <select class="form-select"  name="type" aria-label="Default select example">
+                                        <option selected value="{{ $redevable->type}}" >{{ $redevable->type}}</option>
                                         <option value="taxi">taxi</option>
                                         <option value="societe">societe</option>
                                         <option value="personne">personne</option>
@@ -73,25 +72,26 @@
                                     </div>
                                 </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">CNE</label>
+                                        <label  class="col-sm-3 col-form-label">CIN</label>
                                         <div class="col-sm-9">
-                                            <input type="text" value="{{ $redevable->cne}}" class="form-control">
+                                            <input type="text" name="cin" value="{{ $redevable->cin}}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Email</label>
+                                        <label class="col-sm-3 col-form-label">Email</label>
                                         <div class="col-sm-9">
-                                            <input type="email" value="{{ $redevable->email}}" class="form-control">
+                                            <input type="email" name="email" value="{{ $redevable->email}}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Telephone</label>
+                                        <label  class="col-sm-3 col-form-label">Telephone</label>
                                         <div class="col-sm-9">
-                                            <input type="tel" class="form-control" value="{{ $redevable->telephone}}" >
+                                            <input type="tel" name="telephone" class="form-control" value="{{ $redevable->telephone}}" >
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                    <button class="btn btn-light">Cancel</button>
+
+                                    <button type="submit"  class="btn btn-primary mr-2">Changer</button>
+                                    <button class="btn btn-light" >Annuler</button>
                                 </form>
 
 

@@ -10,6 +10,6 @@ class Payement extends Model
     use HasFactory;
     protected $table = 'payement';
     protected $fillable = [ 
-        'id'
+        'date','autorisation_id','quittence','date_quittence','annee','trim','active',	
     ];
 }

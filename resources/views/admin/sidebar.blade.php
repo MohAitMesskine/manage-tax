@@ -18,20 +18,24 @@
         <div class="nav-container">
             <nav id="main-menu-navigation" class="navigation-main">
                 <div class="nav-item {{ ($segment2 == 'inventory') ? 'active' : '' }}">
-                    <a href="{{route('admin')}}"><i class="ik ik-bar-chart-2"></i><span>{{ __('Dashboard')}}</span></a>
+                    <a href="{{route('admin')}}"><i class="ik ik-home"></i><span>{{ __('Dashboard')}}</span></a>
                 </div>
 
                 <!-- start admin pages -->
-                {{-- admin redevable --}}
-
-
+                            {{-- admin redevable --}}
                             <div class="nav-item {{ ($segment2 == 'inventory') ? 'active' : '' }}">
-                                <a href="{{route('redevables.index')}}"><i class="ik ik-bar-chart-2"></i><span>{{ __('Redevable')}}</span></a>
+                                <a href="{{route('redevables.index')}}"><i class="ik ik-user"></i><span>{{ __('Redevable')}}</span></a>
+                            </div>
+                            {{-- admin autorisation --}}
+                            <div class="nav-item {{ ($segment2 == 'inventory') ? 'active' : '' }}">
+                                <a href="{{route('autorisation.index')}}"> <i class="ik ik-list"></i><span>{{ __('Autorisation')}}</span></a>
                             </div>
                             {{-- admin payement --}}
                              <div class="nav-item {{ ($segment2 == 'inventory') ? 'active' : '' }}">
                                 <a href="{{route('payement.index')}}"><i class="ik ik-bar-chart-2"></i><span>{{ __('Payement')}}</span></a>
                             </div>
+
+                           >
 
                 <!-- end admin pages -->
 

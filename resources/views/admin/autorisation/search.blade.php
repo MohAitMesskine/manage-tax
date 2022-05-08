@@ -1,5 +1,5 @@
-@extends('admin.layout')
-@section('title', 'Redevables')
+ @extends('admin.layout')
+@section('title', 'Autorisation')
 @section('content')
 
 	<div class="container-fluid">
@@ -7,10 +7,10 @@
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                      <i class="ik ik-user"></i>
+                        <i class="ik ik-headphones bg-green"></i>
                         <div class="d-inline">
-                            <h5>Redevables</h5>
-                            <span> La Listes Des Redevables </span>
+                            <h5>Autorisation</h5>
+                            <span> La Listes Des Autorisation </span>
                         </div>
                     </div>
                 </div>
@@ -18,10 +18,10 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="/dashboard"><i class="ik ik-user"></i></a>
+                                <a href="/dashboard"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Redevables</a>
+                                <a href="{{ route('autorisation.index') }}"> Autorisation</a>
                             </li>
                         </ol>
                     </nav>
@@ -40,7 +40,10 @@
 		                    <div class="card-options d-inline-block">
 		                        <div class="dropdown d-inline-block">
 		                            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-
+		                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="moreDropdown">
+		                                <a class="dropdown-item" href="#">Delete</a>
+		                                <a class="dropdown-item" href="#">More Action</a>
+		                            </div>
 		                        </div>
 		                    </div>
 
@@ -48,27 +51,20 @@
 		                <div class="col col-sm-6">
 		                    <div class="card-search with-adv-search dropdown">
                                 <div class="col col-sm-6">
-                                    <form action="{{ route('search') }}" method="GET">
+
                                     <div class="card-search with-adv-search dropdown">
                                         <div class="input-group mb-3">
 
-                                                <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" required />
-                                                <button type="submit"class="input-group-text border-0" id="search-addon">
-                                                  <i class="fas fa-search"></i>
-                                                </button>
-                                            </form>
+
+
                                           </div>
                                     </div>
                                 </div>
 		                    </div>
 		                </div>
-
-
 		                <div class="col col-sm-5">
 		                    <div class="card-options text-right">
-                                @can('redevable_create')
-			                    <a href="{{url('redevables/create')}}" class=" btn btn-outline-primary btn-semi-rounded ">Ajouter Redevable</a>
-                                @endcan
+
                             </div>
 		                </div>
 		            </div>
@@ -78,44 +74,57 @@
                                 <thead>
                                     <tr>
                                         <th class="nosort" width="10">
-
+                                            <label class="custom-control custom-checkbox m-0">
+                                                <input type="checkbox" class="custom-control-input" id="selectall" name="" value="option2">
+                                                <span class="custom-control-label">&nbsp;</span>
                                             </label>
                                         </th>
-
-                                        <th>Nom</th>
-                                        <th>Adress</th>
+                                        <th>Nom Redevable</th>
+                                        <th>Numero</th>
+                                        <th>Date</th>
                                         <th>Type</th>
-                                        <th>CIN</th>
-                                        <th>Email</th>
-                                        <th>Telephone</th>
+                                        <th>RC</th>
+                                        <th>Sup</th>
+                                        <th>Categorie</th>
+                                        <th>Sous Categorie</th>
+                                        <th>Numero Rolot</th>
+                                        <th>Pattante</th>
+                                        <th>Obersation</th>
+                                        <th>Valeur Locative</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
-
-                                    @foreach ($redevables as $redevable)
+                                    @foreach ($autorisation as $autorisation)
                                     <tr>
                                         <td>
-
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input select_all_child" id="" name="id" value="{{ $autorisation->id }}">
+                                                <span class="custom-control-label">&nbsp;</span>
+                                            </label>
                                         </td>
-
-                                        <td>{{ $redevable->nom }}</td>
-                                        <td>{{ $redevable->adress}}</td>
-                                        <td>{{ $redevable->type }}</td>
-                                        <td>{{ $redevable->cin }}</td>
-                                        <td>{{ $redevable->email }}</td>
-                                        <td>{{ $redevable->telephone}}</td>
+                                         <td>{{$autorisation->nom}}</td>
+                                        <td>{{ $autorisation->numero }}</td>
+                                        <td>{{ $autorisation->date}}</td>
+                                        <td>{{ $autorisation->type }}</td>
+                                        <td>{{ $autorisation->rc }}</td>
+                                        <td>{{ $autorisation->sup }}</td>
+                                        <td>{{ $autorisation->categorie}}</td>
+                                        <td>{{ $autorisation->souscate}}</td>
+                                        <td>{{ $autorisation->numerolot}}</td>
+                                        <td>{{ $autorisation->pattante}}</td>
+                                        <td>{{ $autorisation->observation}}</td>
+                                        <td>{{ $autorisation->valeurlocative}}</td>
                                         <td>
 
                                             {{-- @can('redevable_show')
                                             <a href="#redevableView" onclick="show_redevable(this)" data-attr="{{ route('redevables.getredevable', $redevable->id) }}" data-toggle="modal" data-target="#redevableView"><i class="ik ik-eye f-16 mr-15"></i></a>
                                             @endcan --}}
-
-                                            <a href="{{ route('redevables.edit', $redevable->id) }}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
-
+                                            @can('redevable_edit')
+                                            <a href="{{ route('autorisation.edit', $autorisation->id) }}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
+                                            @endcan
                                             @can('redevable_delete')
-                                            <form action="{{ route('redevables.destroy', $redevable->id) }}" method="POST" style="display: inline-block;">
+                                            <form action="{{ route('autorisation.destroy', $autorisation->id) }}" method="POST" style="display: inline-block;">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn bg-transparent" style="display: contents" ><i class="ik ik-trash-2 f-16 text-red"></i></button>
@@ -124,12 +133,10 @@
                                         </td>
                                     </tr>
                                     @endforeach
-
-
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-center">
-                                {{ $redevables->links() }}
+                                {{--  {{ $autorisation->links() }} --}}
                             </div>
                         </div>
 		            </div>

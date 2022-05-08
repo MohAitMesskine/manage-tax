@@ -17,6 +17,7 @@ class CreatePayementTbl extends Migration
             $table->id();
             $table->date('date')->nullable();
             $table->bigInteger('autorisation_id')->unsigned();
+            $table->foreign('autorisation_id')->references('id')->on('autorisation');
             $table->string('quittence')->nullable();
             $table->date('date_quittence')->nullable();
             $table->integer('annee')->nullable();

@@ -7,7 +7,7 @@
             <div class="row align-items-end">
                 <div class="col-lg-8">
                     <div class="page-header-title">
-                      <i class="ik ik-user"></i>
+                        <i class="ik ik-home"></i>
                         <div class="d-inline">
                             <h5>Redevables</h5>
                             <span> La Listes Des Redevables </span>
@@ -18,7 +18,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="/dashboard"><i class="ik ik-user"></i></a>
+                                <a href="/dashboard"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="#">Redevables</a>
@@ -50,12 +50,12 @@
                                 <div class="col col-sm-6">
                                     <form action="{{ route('search') }}" method="GET">
                                     <div class="card-search with-adv-search dropdown">
-                                        <div class="input-group mb-3">
-
+                                         <div class="input-group mb-3">
+{{--
                                                 <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" required />
                                                 <button type="submit"class="input-group-text border-0" id="search-addon">
                                                   <i class="fas fa-search"></i>
-                                                </button>
+                                                </button> --}}
                                             </form>
                                           </div>
                                     </div>
@@ -65,11 +65,11 @@
 
 
 		                <div class="col col-sm-5">
-		                    <div class="card-options text-right">
+		                    {{-- <div class="card-options text-right">
                                 @can('redevable_create')
 			                    <a href="{{url('redevables/create')}}" class=" btn btn-outline-primary btn-semi-rounded ">Ajouter Redevable</a>
                                 @endcan
-                            </div>
+                            </div> --}}
 		                </div>
 		            </div>
 		            <div class="card-body">
@@ -92,7 +92,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    @if($redevables->isNotEmpty())
 
                                     @foreach ($redevables as $redevable)
                                     <tr>
@@ -111,9 +111,9 @@
                                             {{-- @can('redevable_show')
                                             <a href="#redevableView" onclick="show_redevable(this)" data-attr="{{ route('redevables.getredevable', $redevable->id) }}" data-toggle="modal" data-target="#redevableView"><i class="ik ik-eye f-16 mr-15"></i></a>
                                             @endcan --}}
-
+                                            @can('redevable_edit')
                                             <a href="{{ route('redevables.edit', $redevable->id) }}"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
-
+                                            @endcan
                                             @can('redevable_delete')
                                             <form action="{{ route('redevables.destroy', $redevable->id) }}" method="POST" style="display: inline-block;">
                                                 @method('DELETE')
@@ -125,11 +125,15 @@
                                     </tr>
                                     @endforeach
 
-
+                                    @else
+                                        <div>
+                                            <h2>Aucune Redevadable trouvé</h2>
+                                        </div>
+                                    @endif
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-center">
-                                {{ $redevables->links() }}
+                                {{-- {{ $redevables->links() }} --}}
                             </div>
                         </div>
 		            </div>
@@ -209,3 +213,4 @@
         <script src="{{ asset('js/redevable.js') }}"></script>
     @endpush
 @endsection
+

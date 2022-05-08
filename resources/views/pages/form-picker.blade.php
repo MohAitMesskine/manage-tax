@@ -1,5 +1,5 @@
-@extends('layouts.main') 
-@section('title', 'Form Picker')
+@extends('layouts.main')
+@section('title', 'Commune Ait Meloul')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ asset('plugins/jquery-minicolors/jquery.minicolors.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/datedropper/datedropper.min.css') }}">
     @endpush
-       
+
 
     <div class="container-fluid">
         <div class="page-header">
@@ -17,7 +17,7 @@
                         <i class="ik ik-terminal bg-blue"></i>
                         <div class="d-inline">
                             <h5>{{ __('Form Picker')}}</h5>
-                            <span>{{ __('lorem ipsum dolor sit amet, consectetur adipisicing elit')}}</span>
+                            <span>{{ __('.......................................')}}</span>
                         </div>
                     </div>
                 </div>
@@ -318,7 +318,7 @@
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
     </div>
 
     <!-- push external js -->

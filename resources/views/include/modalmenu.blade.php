@@ -18,7 +18,7 @@
                 <div class="container">
                     <div class="apps-wrap">
                         <div class="app-item">
-                            <a href="#"><i class="ik ik-bar-chart-2"></i><span>{{ __('Dashboard')}}</span></a>
+                            <a href="#"><i class="ik ik-bar-chart-2"></i><span>{{ __('Acceuil')}}</span></a>
                         </div>
                         <div class="app-item dropdown">
                             <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-command"></i><span>{{ __('Ui')}}</span></a>
@@ -34,9 +34,9 @@
                         <div class="app-item">
                             <a href="#"><i class="ik ik-users"></i><span>{{ __('Accounts')}}</span></a>
                         </div>
-                        <div class="app-item">
+                        {{-- <div class="app-item">
                             <a href="#"><i class="ik ik-shopping-cart"></i><span>{{ __('Sales')}}</span></a>
-                        </div>
+                        </div> --}}
                         <div class="app-item">
                             <a href="#"><i class="ik ik-briefcase"></i><span>{{ __('Purchase')}}</span></a>
                         </div>

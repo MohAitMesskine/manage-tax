@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Autorisation;
 use App\Models\Redevable;
 use Illuminate\Http\Request;
 
@@ -38,14 +39,20 @@ class RedevableController extends Controller
     public function store(Request $request)
     {
         //
-         $request->validate([
-            'id' => 'required',
+
+         if($_POST['nom']==null){
+            return redirect()->route('redevables.create')
+            ->with('error','inserer un nom');
+         }
+        $request->validate([
+
             'nom' => 'required|max:255',
-            'adress' => 'null|max:255',
-            'type' => 'null|max:255',
-            'cin' => 'null|max:255',
-            'email' => 'null|max:255',
-            'telephone' => 'null',
+            'adress' => 'nullable|max:255',
+            'type' => 'nullable|max:255',
+            'cin' => 'nullable|max:255',
+            'email' => 'nullable|email',
+            'telephone' => 'nullable',
+            'active'=> 'nullable|boolean',
 
         ]);
 
@@ -73,9 +80,10 @@ class RedevableController extends Controller
      * @param  \App\Models\Redevable  $redevable
      * @return \Illuminate\Http\Response
      */
-    public function edit(Redevable $redevable)
+    public function edit($id)
     {
         //
+        $redevable= Redevable::find($id);
         return view('admin.redevable.edit',compact('redevable'));
     }
 
@@ -86,18 +94,24 @@ class RedevableController extends Controller
      * @param  \App\Models\Redevable  $redevable
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Redevable $redevable)
+    public function update(Request $request,Redevable $redevable)
     {
         //
         $request->validate([
-            'id' => 'required',
-            
+            'nom' => 'required|max:255',
+            'adress' => 'nullable|max:255',
+            'type' => 'nullable|max:255',
+            'cin' => 'nullable|max:255',
+            'email' => 'nullable|email',
+            'telephone' => 'nullable|integer',
+            'active'=> 'nullable|boolean',
+
         ]);
-    
+
         $redevable->update($request->all());
-    
-        return redirect()->route('admin.redevables.index')
-                        ->with('success','redevable mis à jour avec succès');
+
+        return redirect()->route('redevables.index')
+                        ->with('success','Redevable updated successfully');
     }
 
     /**
@@ -111,8 +125,20 @@ class RedevableController extends Controller
    {
         //
         $redevable->delete();
-    
-        return redirect()->route('admin.redevables.index')
+
+        return redirect()->route('redevables.index')
                         ->with('success','Redevables supprimé avec succès');
+    }
+    public function search(Request $request){
+
+        $search = $request->input('search');
+
+        $redevables = Redevable::query()
+                    ->where('nom', 'LIKE', "%{$search}%")
+                    ->orWhere('cin', 'LIKE', "%{$search}%")
+                    ->get()
+                     ;
+
+        return view('admin.redevable.search',compact('redevables'));
     }
 }

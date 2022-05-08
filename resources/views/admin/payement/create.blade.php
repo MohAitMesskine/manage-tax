@@ -10,7 +10,7 @@
                         <i class="ik ik-headphones bg-green"></i>
                         <div class="d-inline">
                             <h5>Payement</h5>
-                            <span>View, Crer un payement </span>
+                            <span> Créer un payement </span>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                                 <a href="/dashboard"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">Payement</a>
+                                <a href="{{ route('payement.index') }}">Payement</a>
                             </li>
                         </ol>
                     </nav>
@@ -49,38 +49,45 @@
                                 <form action="{{ route('payement.store') }}" method="POST" class="forms-sample  col-form-label">
                                     @csrf
                                     <div class="form-group row">
+                                        {{ Form::label('numero', 'Numero Autorisation:',['class' => 'col-sm-3 col-form-label' ])}}
+                                        <div class="col-sm-9">
+
+                                    {!! Form::select('autorisation_id', $autorisations ,null, ['class' => 'form-control','value' => '$autorisations->id','name' => 'autorisation_id' ])  !!}
+                                </div>
+                            </div>
+                                    <div class="form-group row">
                                         <label for="exampleInputUsername2" class="col-sm-3 col-form-label">date	</label>
                                         <div class="col-sm-9">
-                                            <input type="date" class="form-control"  placeholder="Saisir La date">
+                                            <input type="date" name="date" class="form-control"  placeholder="Saisir La date">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="exampleInputEmail2" class="col-sm-3 col-form-label">quittence</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control"  placeholder="Votre quittence">
+                                            <input type="text" name="quittence" class="form-control"  placeholder="Votre quittence">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="exampleInputPassword2" class="col-sm-3 col-form-label">	date_quittence</label>
                                         <div class="col-sm-9">
-                                            <input type="date" class="form-control" placeholder="Saisir La date De quittance">
+                                            <input type="date" name="date_quittence" class="form-control" placeholder="Saisir La date De quittance">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="exampleInputPassword2" class="col-sm-3 col-form-label">L'année</label>
                                         <div class="col-sm-9">
-                                            <input type="number" class="form-control" placeholder="Saisir L`annnée">
+                                            <input type="number"name="annee" class="form-control" placeholder="Saisir L`annnée">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">	Trimestre</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control"  placeholder="Saisir Le trim">
+                                            <input type="text" name="trim" class="form-control"  placeholder="Saisir Le trim">
                                         </div>
                                     </div>
-                                   
+
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                    <button class="btn btn-light">Cancel</button>
+                                    <button class="btn btn-light" {{ route('payement.index') }}>Cancel</button>
                                 </form>
 
 
