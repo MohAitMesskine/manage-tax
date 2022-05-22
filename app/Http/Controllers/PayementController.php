@@ -18,16 +18,12 @@ class PayementController extends Controller
      */
     public function index()
     {
-        // Payement::all();
         $payement=DB::table('payement')
         ->join('autorisation', 'payement.autorisation_id', '=', 'autorisation.id')
         ->select('autorisation.numero','payement.*')
-        ->get()
-        ;
-
+        ->get();
         $pay = Payement::paginate(3);
         return view('admin.payement.index', ['payement' => $payement], compact('pay'));
-
     }
 
 
@@ -38,7 +34,6 @@ class PayementController extends Controller
      */
     public function create(Autorisation $autorisation)
     {
-        //
         $autorisations= Autorisation::pluck('numero','id');
         return view('admin.payement.create', compact('autorisation', 'autorisations'));
     }
@@ -51,7 +46,6 @@ class PayementController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'date' => 'nullable|date',
             'quittence' => 'nullable|max:255',
@@ -60,9 +54,7 @@ class PayementController extends Controller
             'trim' => 'nullable|max:255',
             'active' => 'nullable|boolean',
         ]);
-
        Payement::create($request->all());
-
         return redirect()->route('payement.index')
                         ->with('success','Redevable created successfully.');
     }
@@ -84,11 +76,11 @@ class PayementController extends Controller
      * @param  \App\Models\Payement  $payement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Payement $payement, Autorisation $autorisation)
+    public function edit(Payement $payement)
     {
-        //
-        $autorisations= Autorisation::pluck('numero','id');
-        return view('admin.payement.edit',compact('payement','autorisation', 'autorisations'));
+ 
+        $autorisations= Autorisation::get();
+        return view('admin.payement.edit',compact('payement', 'autorisations'));
     }
 
     /**
@@ -100,7 +92,6 @@ class PayementController extends Controller
      */
     public function update(Request $request, Payement $payement)
     {
-        //
         $request->validate([
             'date' => 'nullable|date',
             'quittence' => 'nullable|max:255',
@@ -108,11 +99,9 @@ class PayementController extends Controller
             'annee' => 'nullable|integer',
             'trim' => 'nullable|max:255',
             'active' => 'nullable|boolean',
-
         ]);
 
         $payement->update($request->all());
-
         return redirect()->route('payement.index')
                         ->with('success','payement mis à jour avec succès');
     }
@@ -129,21 +118,23 @@ class PayementController extends Controller
         $payement->delete();
 
         return redirect()->route('payement.index')
-                        ->with('success','Payement supprimé avec succès');
+                        ->with('error','Payement supprimé avec succès');
     }
 
     public function search(Request $request){
 
         $search = $request->input('search');
-
+        if($search==null){
+            return redirect()->route('payement.index')
+                        ->with('error','La recherche est vide !!!');
+        }
+        else{
         $payement=DB::table('payement')
-        ->join('autorisation', 'payement.autorisation_id', '=', 'autorisation.id')
-        ->select('autorisation.numero','payement.*')
-                    ->where('numero', 'LIKE', "%{$search}%")
-
-                    ->get()
-                     ;
-
+                      ->join('autorisation', 'payement.autorisation_id', '=', 'autorisation.id')
+                      ->select('autorisation.numero','payement.*')
+                      ->where('numero', 'LIKE', "%{$search}%")
+                      ->get();
         return view('admin.payement.search',['payement' => $payement]);
     }
+}
 }

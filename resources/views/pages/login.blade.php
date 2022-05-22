@@ -1,17 +1,17 @@
 <!doctype html>
 <html class="no-js" lang="en">
-    <head> 
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{{ __('Login | Radmin - Laravel Admin Starter') }}</title>
+        <title>{{ __('Login | Commune ') }}</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link rel="icon" href="{{ asset('favicon.png') }}"/>
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
-        
+
         <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/ionicons/dist/css/ionicons.min.css') }}">
@@ -31,8 +31,11 @@
             <div class="container-fluid h-100">
                 <div class="row flex-row h-100 bg-white">
                     <div class="col-xl-8 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
-                        <div class="lavalite-bg" >
-                            <div class="lavalite-overlay"></div>
+                        <div >
+                            <div class="lavalite-overlay">
+                                <a href=""><img src="{{ asset('img/logo.png') }}" alt=""  height="700px"></a>
+                            </div>
+
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
@@ -40,8 +43,8 @@
                             <div class="logo-centered">
                                 <a href=""><img src="{{ asset('img/logo.png') }}" alt=""></a>
                             </div>
-                            <h3>{{ __('Sign In to ThemeKit') }}</h3>
-                            <p>{{ __('Happy to see you again!') }}</p>
+                            <h3>{{ __('Connecter Au Commune Ait Meloul') }}</h3>
+                            <p>{{ __('Bienvenue!') }}</p>
                             <form method="POST" action="{{ route('login') }}">
                             @csrf
                                 <div class="form-group">
@@ -71,12 +74,12 @@
                                     </div>
                                     <div class="col text-right">
                                         <a class="btn btn-link" href="">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('Oublier Mot Passe?') }}
                                         </a>
                                     </div>
                                 </div>
                                 <div class="sign-btn text-center">
-                                    <button class="btn btn-theme">{{ __('Sign In') }}</button>
+                                    <button class="btn btn-theme">{{ __('Connecter') }}</button>
                                 </div>
                             </form>
                         </div>
@@ -84,12 +87,12 @@
                 </div>
             </div>
         </div>
-        
+
         <script src="{{ asset('src/js/vendor/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}"></script>
         <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js') }}"></script>
         <script src="{{ asset('plugins/screenfull/dist/screenfull.js') }}"></script>
-        
+
     </body>
 </html>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Autorisation;
 use App\Models\Redevable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RedevableController extends Controller
 {
@@ -26,7 +27,6 @@ class RedevableController extends Controller
      */
     public function create()
     {
-        //
         return view('admin.redevable.create');
     }
 
@@ -38,14 +38,11 @@ class RedevableController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
          if($_POST['nom']==null){
             return redirect()->route('redevables.create')
             ->with('error','inserer un nom');
          }
         $request->validate([
-
             'nom' => 'required|max:255',
             'adress' => 'nullable|max:255',
             'type' => 'nullable|max:255',
@@ -55,9 +52,7 @@ class RedevableController extends Controller
             'active'=> 'nullable|boolean',
 
         ]);
-
        Redevable::create($request->all());
-
         return redirect()->route('redevables.index')
                         ->with('success','Redevable created successfully.');
     }
@@ -68,10 +63,13 @@ class RedevableController extends Controller
      * @param  \App\Models\Redevable  $redevable
      * @return \Illuminate\Http\Response
      */
-    public function show(Redevable $redevable)
+    public function show($id)
     {
-        //
-        return view('admin.redevables.show',compact('redevables'));
+        $redevable= Redevable::find($id);
+        $autorisations = $redevable->autorisations();
+        $rede= Redevable::paginate(4);
+       return view('admin.redevable.show',['redevable' => $redevable],['autorisations' => $autorisations], compact('rede'));
+
     }
 
     /**
@@ -123,22 +121,57 @@ class RedevableController extends Controller
     public function destroy(Redevable $redevable)
 
    {
-        //
         $redevable->delete();
-
         return redirect()->route('redevables.index')
-                        ->with('success','Redevables supprimé avec succès');
+                        ->with('error','Redevables supprimé avec succès');
     }
     public function search(Request $request){
-
         $search = $request->input('search');
-
+        if($search==null){
+            return redirect()->route('redevables.index')
+                        ->with('error','La recherche est vide !!!');
+        }
+        else{
         $redevables = Redevable::query()
                     ->where('nom', 'LIKE', "%{$search}%")
                     ->orWhere('cin', 'LIKE', "%{$search}%")
-                    ->get()
-                     ;
+                    ->get();
+
 
         return view('admin.redevable.search',compact('redevables'));
     }
+    }
+
+    public function ajouter($id)
+    {
+        $redevable= Redevable::find($id);
+        return view('admin.redevable.ajouter', compact('redevable'));
+    }
+    public function store_ajouter(Request $request)
+    {
+        $request->validate([
+            'numero' => 'nullable',
+            'date' => 'nullable|date',
+            'type' => 'nullable',
+            'date' => 'nullable',
+            'rc' => 'nullable',
+            'sup' => 'nullable',
+            'montant' => 'nullable',
+            'categorie' => 'nullable',
+            'souscate' => 'nullable',
+            'article' => 'nullable',
+            'numerolot' => 'nullable',
+            'pattante' => 'nullable',
+            'observation' => 'nullable',
+            'valeurlocative' => 'nullable',
+
+        ]);
+
+       Redevable::create($request->all());
+       return redirect()->route('redevables.index')
+                        ->with('success','autorisation created successfully.');
+    }
+
 }
+
+

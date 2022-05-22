@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Commune - Gestion--Tax</title>
+        <title>CommuneAitMeloul - Les Impots</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,27 +27,26 @@
 		<div class="container ">
 			<div class="d-flex justify-content-between my-5">
 				<div>
-					<a href="https://arthemic.com/products/radmin/">
+					<a href="#">
 		            	<img height="30" src="{{ asset('img/logo.png') }}">
 		            </a>
 				</div>
 				<div>
-					<a class="btn btn-success btn-rounded mr-3" href="{{url('login')}}/">Login</a>
-					<a class="btn btn-warning btn-rounded" href="https://arthemicofficial.github.io/Radmin-Laravel-Admin-Starter-Kit/">Documentation</a>
+					<a class="btn btn-success btn-rounded mr-3" href="{{url('login')}}/">Inscrire</a>
+					<a class="btn btn-warning btn-rounded" href="https://arthemicofficial.github.io/Radmin-Laravel-Admin-Starter-Kit/">Site Officiel</a>
 				</div>
 			</div>
 	    	<div class="banner-text m-4 d-relative">
 	    		<img height="50" class="d-absolute left-0"  src="{{asset('/img/p1.png')}}">
-	    		<img height="300" class="d-absolute"  src="{{asset('/img/s1-2.png')}}">
+	    		<img height="100" width="130px" style="margin: 150px" class="d-absolute"  src="{{asset('/img/logoo.png')}}">
 	    		<img height="50" class="d-absolute right-0"  src="{{asset('/img/s2-2.png')}}">
-	    		Commune Ait Meloul <br> Application For Tax
+	    		Commune Ait Meloul <br> Application Pour Gérer Les Impots
 	    	</div>
 
-	    	<div class="radmin-bannner text-center">
-	    		<img  src="{{asset('/img/logo.jpg')}}">
-	    	</div>
-		    <div class="row justify-content-center">
-		        <div class="my-5">
+
+
+		    <div style="margin: 80px"  class="row justify-content-center">
+		        <div class="my-5"style="margin: 150px">
 		        	<p class="text-center">Contactez nous ??</p>
 		        	<div class="card-body template-demo text-center">
                         <a href="#" class="btn social-btn text-white btn-google"><i class="ik ik-globe"></i></a>

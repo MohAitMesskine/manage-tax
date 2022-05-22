@@ -37,18 +37,18 @@
                     <div class="card-body">
                         <div class="text-center">
                             <img src="../img/logo.png" class="rounded-circle" width="150" />
-                            <h4 class="card-title mt-10">{{ __('Commune Ait Meloul')}}</h4>
-                            <p class="card-subtitle">{{ __('Front End Developer')}}</p>
+                            <h4 class="card-title mt-10">{{ __('Mohamed Ait Messkine')}}</h4>
+                            <p class="card-subtitle">{{ __('Dévelopeur informatique ')}}</p>
                             <div class="row text-center justify-content-md-center">
-                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="ik ik-user"></i> <font class="font-medium">254</font></a></div>
-                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="ik ik-image"></i> <font class="font-medium">54</font></a></div>
+                                {{-- <div class="col-4"><a href="javascript:void(0)" class="link"><i class="ik ik-user"></i> <font class="font-medium">254</font></a></div>
+                                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="ik ik-image"></i> <font class="font-medium">54</font></a></div> --}}
                             </div>
                         </div>
                     </div>
                     <hr class="mb-0">
                     <div class="card-body">
                         <small class="text-muted d-block">{{ __('Email address')}} </small>
-                        <h6>aitmesskinea@admin.com</h6>
+                        <h6>aitmesskine@gmail.com</h6>
                         <small class="text-muted d-block pt-10">{{ __('Phone')}}</small>
                         <h6>00000000000</h6>
                         <small class="text-muted d-block pt-10">{{ __('Address')}}</small>
@@ -67,17 +67,17 @@
             <div class="col-lg-8 col-md-7">
                 <div class="card">
                     <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link active" id="pills-timeline-tab" data-toggle="pill" href="#current-month" role="tab" aria-controls="pills-timeline" aria-selected="true">{{ __('Timeline')}}</a>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#last-month" role="tab" aria-controls="pills-profile" aria-selected="false">{{ __('Profile')}}</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#previous-month" role="tab" aria-controls="pills-setting" aria-selected="false">{{ __('Setting')}}</a>
+                            <a aria-selected="false"  class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#previous-month" role="tab" aria-controls="pills-setting">{{ __('Informations')}}</a>
                         </li>
                     </ul>
-                    <div class="tab-content" id="pills-tabContent">
+                    {{-- <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="current-month" role="tabpanel" aria-labelledby="pills-timeline-tab">
                             <div class="card-body">
                                 <div class="profiletimeline mt-0">
@@ -98,8 +98,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <hr>
+                                    </div> --}}
+                                    {{-- <hr>
                                     <div class="sl-item">
                                         <div class="sl-left"> <img src="../img/users/2.jpg" alt="user" class="rounded-circle" /> </div>
                                         <div class="sl-right">
@@ -117,8 +117,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr>
-                                    <div class="sl-item">
+                                    <hr> --}}
+                                    {{-- <div class="sl-item">
                                         <div class="sl-left"> <img src="../img/users/3.jpg" alt="user" class="rounded-circle" /> </div>
                                         <div class="sl-right">
                                             <div>
@@ -130,8 +130,8 @@
                                                 <a href="javascript:void(0)" class="link mr-10"><i class="fa fa-heart text-danger"></i> 5 Love</a>
                                             </div>
                                         </div>
-                                    </div>
-                                    <hr>
+                                    </div> --}}
+                                    {{-- <hr>
                                     <div class="sl-item">
                                         <div class="sl-left"> <img src="../img/users/4.jpg" alt="user" class="rounded-circle" /> </div>
                                         <div class="sl-right">
@@ -144,8 +144,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="last-month" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        </div> --}}
+                        {{-- <div class="tab-pane fade" id="last-month" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-3 col-6"> <strong>{{ __('Full Name')}}</strong>
@@ -164,8 +164,8 @@
                                         <br>
                                         <p class="text-muted">Agadir</p>
                                     </div>
-                                </div>
-                                <hr>
+                                </div> --}}
+                                {{-- <hr>
                                 <p class="mt-30">{{ __('commune Ait Meloul')}}</p>
                                 <p>{{ __('')}} </p>
                                 <p>{{ __('')}}</p>
@@ -188,12 +188,12 @@
                                     <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%;"> <span class="sr-only">50% Complete</span> </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="tab-pane fade" id="previous-month" role="tabpanel" aria-labelledby="pills-setting-tab">
                             <div class="card-body">
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="example-name">{{ __('Full Name')}}</label>
+                                        <label for="example-name">{{ __(' Nom Et Prénom')}}</label>
                                         <input type="text" placeholder="Mohamed Ait Messkine" class="form-control" name="example-name" id="example-name">
                                     </div>
                                     <div class="form-group">
@@ -201,24 +201,24 @@
                                         <input type="email" placeholder="m.aitmesskine@admin.com" class="form-control" name="example-email" id="example-email">
                                     </div>
                                     <div class="form-group">
-                                        <label for="example-password">{{ __('Password')}}</label>
+                                        <label for="example-password">{{ __('Mot De Passe')}}</label>
                                         <input type="password" value="password" class="form-control" name="example-password" id="example-password">
                                     </div>
                                     <div class="form-group">
-                                        <label for="example-phone">{{ __('Phone No')}}</label>
+                                        <label for="example-phone">{{ __('Numero Téllephone')}}</label>
                                         <input type="text" placeholder="00000000" id="example-phone" name="example-phone" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="example-message">{{ __('Message')}}</label>
+                                        <label for="example-message">{{ __('Message/Obeservation')}}</label>
                                         <textarea name="example-message" name="example-message" rows="5" class="form-control"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="example-country">{{ __('Select Country')}}</label>
+                                        <label for="example-country">{{ __('Select Votre Fonction')}}</label>
                                         <select name="example-message" id="example-message" class="form-control">
-                                            <option>{{ __('Maroc')}}</option>
-                                            <option>{{ __('France')}}</option>
-                                            <option>{{ __('Usa')}}</option>
-                                            <option>{{ __('Canada')}}</option>
+                                            <option>{{ __('Dericteur')}}</option>
+                                            <option>{{ __('technicien')}}</option>
+                                            <option>{{ __('Manager')}}</option>
+                                            <option>{{ __('Ingénieur')}}</option>
 
                                         </select>
                                     </div>
@@ -226,9 +226,9 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    {{-- </div> --}}
+                {{-- </div>
+            </div> --}}
         </div>
     </div>
 @endsection

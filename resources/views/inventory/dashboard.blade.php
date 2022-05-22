@@ -1,5 +1,5 @@
 @extends('inventory.layout') 
-@section('title', 'Dashboard')
+@section('title', 'Acceuil')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')

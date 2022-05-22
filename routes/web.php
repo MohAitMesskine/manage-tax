@@ -12,6 +12,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PayementController;
 use App\Http\Controllers\RedevableController;
 use App\Http\Controllers\AutorisationController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 /*
@@ -58,13 +59,20 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin', [HomeController::class,'index'])->name('admin');
 	//route redevable
     Route::resource('redevables', RedevableController::class);
-    Route::get('/search', [RedevableController::class,'search'])->name('search');
+    Route::get('redevable/search', [RedevableController::class,'search'])->name('chercher');
+    Route::get('redevable/ajouter/{id?}', [RedevableController::class,'ajouter'])->name('ajout');
+   // Route::get('redevable/ajouter/{id?}', [RedevableController::class,'store'])->name('ajouter');
 	//route payement
     Route::resource('payement', PayementController::class);
     Route::get('/recherche', [PayementController::class,'search'])->name('recherche');
     //route autorisation :
     Route::resource('autorisation', AutorisationController::class);
-    Route::get('/search', [AutorisationController::class,'search'])->name('search');
+    Route::get('Autorisation/search', [AutorisationController::class,'search'])->name('search');
+    Route::get('/imprimer/{id?}', [AutorisationController::class,'imprimer'])->name('imprimer');
+    Route::get('autorisation/ajouter/{id?}', [AutorisationController::class,'ajouter'])->name('ajouter');
+    //dashboard
+    Route::resource('dashboard', DashboardController::class);
+
 
 
 

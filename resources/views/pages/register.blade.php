@@ -3,15 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{{ __('Sign Up | Radmin - Laravel Admin Starter')}}</title>
+        <title>{{ __('Inscrire | Commune Les Impots')}}</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link rel="icon" href="{{ asset('favicon.png') }}"/>
 
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
-        
+
         <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/ionicons/dist/css/ionicons.min.css') }}">
@@ -32,8 +32,11 @@
             <div class="container-fluid h-100">
                 <div class="row flex-row h-100 bg-white">
                     <div class="col-xl-8 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
-                        <div class="lavalite-bg">
-                            <div class="lavalite-overlay"></div>
+                        <div>
+                            <div class="lavalite-overlay" style="background-color: rgb(232, 206, 254)" >
+                                    <a href=""><img src="{{ asset('img/logo.png') }}" alt=""  width="950px"  height="720px"></a>
+
+                            </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
@@ -45,7 +48,7 @@
                             <form action="{{url('register')}}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="name" class="form-control" placeholder="Name" name="name" value="{{ old('name') }}" required>
+                                    <input type="name" class="form-control" placeholder="Nom " name="name" value="{{ old('name') }}" required>
                                     <i class="ik ik-user"></i>
                                 </div>
                                 <div class="form-group">
@@ -53,7 +56,7 @@
                                     <i class="fa fa-envelope"></i>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password" name="password" required>
+                                    <input type="password" class="form-control" placeholder="Mot De Passe" name="password" required>
                                     <i class="ik ik-lock"></i>
                                 </div>
                                 <div class="form-group">
@@ -69,18 +72,18 @@
                                     </div>
                                 </div>
                                 <div class="sign-btn text-center">
-                                    <button class="btn btn-theme">{{ __('Create Account')}}</button>
+                                    <button class="btn btn-theme">{{ __('Créer Compte')}}</button>
                                 </div>
                             </form>
                             <div class="register">
-                                <p>{{ __('Already have an account?')}} <a href="{{url('login')}}">{{ __('Sign In')}}</a></p>
+                                <p>{{ __('Deja avoir un compte?')}} <a href="{{url('login')}}">{{ __('Connecter')}}</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <script src="{{ asset('src/js/vendor/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('plugins/popper.js/dist/umd/popper.min.js') }}"></script>
         <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>

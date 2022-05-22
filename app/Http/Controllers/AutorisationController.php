@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Autorisation;
+use App\Models\Payement;
 use App\Models\Redevable;
 use Illuminate\Http\Request;
 
@@ -16,19 +17,12 @@ class AutorisationController extends Controller
      */
     public function index()
     {
-        //
-
-       // $redevables= Redevable::pluck('nom', 'id')->limit(1);
-
-       // $redevables= DB::table('redevable')->select('nom');
        $autorisation=DB::table('autorisation')
-            ->join('redevable', 'autorisation.redevable_id', '=', 'redevable.id')
-            ->select('redevable.nom','autorisation.*')
-            ->get();
-        $auto= Autorisation::paginate(4);;
-
-       // $redevables = DB::table('redevable')->select('nom')->where('id', '1')->paginate(2);
-        return view('admin.autorisation.index', ['autorisation' => $autorisation], compact('auto'));
+         ->join('redevable', 'autorisation.redevable_id', '=', 'redevable.id')
+         ->select('redevable.nom','autorisation.*')
+         ->get();
+       $auto= Autorisation::paginate(4);
+       return view('admin.autorisation.index', ['autorisation' => $autorisation], compact('auto'));
     }
 
     /**
@@ -39,8 +33,6 @@ class AutorisationController extends Controller
     public function create(Redevable $redevable)
     {
         $redevables= Redevable::pluck('nom', 'id');
-
-        // return view('posts.edit')->withPost($post)->withCategories($categories);
         return view('admin.autorisation.create', compact('redevable', 'redevables'));
     }
 
@@ -69,9 +61,7 @@ class AutorisationController extends Controller
             'valeurlocative' => 'nullable',
 
         ]);
-
         Autorisation::create($request->all());
-
         return redirect()->route('autorisation.index')
                         ->with('success','Autorisation created successfully.');
 
@@ -85,7 +75,10 @@ class AutorisationController extends Controller
      */
     public function show($id)
     {
-        //
+        $autorisation= Autorisation::find($id);
+        $autorisations = $autorisation->payement();
+        $auto=DB::table('payement');
+        return view('admin.autorisation.show', ['autorisation' => $autorisation], ['autorisations' => $autorisations],compact('auto'));
     }
 
     /**
@@ -94,11 +87,10 @@ class AutorisationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Autorisation $autorisation, Redevable $redevable)
+    public function edit(Autorisation $autorisation)
     {
-        $redevables= Redevable::pluck('nom', 'id');
-
-        return view('admin.autorisation.edit',compact('autorisation','redevable', 'redevables'));
+        $redevables= Redevable::get();
+        return view('admin.autorisation.edit',compact('autorisation', 'redevables'));
     }
 
     /**
@@ -127,9 +119,7 @@ class AutorisationController extends Controller
             'valeurlocative' => 'nullable',
 
         ]);
-
         $autorisation->update($request->all());
-
         return redirect()->route('autorisation.index')
                         ->with('success','L autorisation mis à jour avec succès');
     }
@@ -143,23 +133,100 @@ class AutorisationController extends Controller
     public function destroy(Autorisation $autorisation)
     {
         $autorisation->delete();
-
         return redirect()->route('redevables.index')
-                        ->with('success','L autorisation est supprimé avec succès');
+                        ->with('error','L autorisation est supprimé avec succès');
     }
+
     public function search(Request $request){
-
         $search = $request->input('search');
-
+        if($search==null){
+        return redirect()->route('autorisation.index')
+                   ->with('error','La recherche est vide !!!');
+        }
+        else{
         $autorisation=DB::table('autorisation')
                     ->join('redevable', 'autorisation.redevable_id', '=', 'redevable.id')
                     ->select('redevable.nom','autorisation.*')
                     ->where('numero', 'LIKE', "%{$search}%")
                     ->orWhere('redevable.nom', 'LIKE', "%{$search}%")
-                    ->get()
-                     ;
+                    ->orWhere('categorie', 'LIKE', "%{$search}%")
+                    ->get();
 
         return view('admin.autorisation.search',compact('autorisation'));
     }
+    }
+
+
+public function imprimer($id){
+    $autorisation= Autorisation::find($id);
+    $redevable= DB::table('autorisation')
+            ->join('redevable', 'autorisation.redevable_id', '=', 'redevable.id')
+            ->select('redevable.*','autorisation.*')
+            ->where('autorisation.id',$id)
+            ->first();
+            // dd($redevable);
+    $payement = DB::table('payement')
+            ->join('autorisation', 'payement.autorisation_id', '=', 'autorisation.id')
+            ->select('autorisation.*','payement.*')
+            ->where('autorisation.id',$id )
+            ->first();
+//    $payement = $autorisation->payement();
+        switch ($payement->trim) {
+                case 1:
+                    if ($redevable->numerolot==null) {
+                        $redevable->numerolot ='------';
+                    }
+                    if ($redevable->article==null) {
+                        $redevable->article='------';
+                    }
+                    $b=0;$c=0;$d=0;
+                    $a = $payement->montant;
+
+                    // no break
+                case 2:
+                    if ($redevable->numerolot==null) {
+                        $redevable->numerolot ='------';
+                    }
+                    if ($redevable->article==null) {
+                        $redevable->article='------';
+                    }
+                    $b= $payement->montant;
+                    $a=0;$c=0;$d=0;
+                    return  view('admin.pdf.index', compact('autorisation', 'redevable', 'payement', 'a', 'b', 'c', 'd'));
+                    break;
+
+                case 3:
+                    if ($redevable->numerolot==null) {
+                        $redevable->numerolot ='------';
+                    }
+                    if ($redevable->article==null) {
+                        $redevable->article='------';
+                    }
+                    $b=0;$b=0;$d=0;
+                    $c= $payement->montant;
+                    return  view('admin.pdf.index', compact('autorisation', 'redevable', 'payement', 'a', 'b', 'c', 'd'));
+                    break;
+
+                case 4:
+                    if ($redevable->numerolot==null) {
+                        $redevable->numerolot ='------';
+                    }
+                    if ($redevable->article==null) {
+                        $redevable->article='------';
+                    }
+                    $b=0;$c=0;$a=0;
+                    $d= $payement->montant;
+                    return  view('admin.pdf.index', compact('autorisation', 'redevable', 'payement', 'a', 'b', 'c', 'd'));
+                    break;
+            }
+}
+            //view pour ajouter autorisation pour un personne par son id
+public function ajouter($id)
+    {
+        $autorisation= Autorisation::find($id);
+        return view('admin.autorisation.ajouter', compact('autorisation'));
+
+    }
 
 }
+

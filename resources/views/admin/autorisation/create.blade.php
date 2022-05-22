@@ -94,7 +94,7 @@
                                         <div class="form-group row">
                                             <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Montant</label>
                                             <div class="col-sm-9">
-                                                <input type="text" name="montant" class="form-control"  placeholder="Saisir Le Montant">
+                                                <input type="number" name="montant" class="form-control"  value="0">
                                             </div>
                                             </div>
                                             <div class="form-group row">

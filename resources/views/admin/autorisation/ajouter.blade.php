@@ -10,7 +10,7 @@
                     <i class="ik ik-headphones bg-green"></i>
                     <div class="d-inline">
                         <h5>Payement</h5>
-                        <span>View, changer un Payement </span>
+                        <span> Créer un payement </span>
                     </div>
                 </div>
             </div>
@@ -47,64 +47,71 @@
 
                     </div>
 
-                    <form class="forms-sample  col-form-label" action="{{ route('payement.update',$payement->id) }}"
-                        method="POST">
+                    <form action="{{ route('payement.store') }}" method="POST" class="forms-sample  col-form-label">
                         @csrf
-                        @method('PUT')
-                        <div class="form-group row">
-                            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Numero</label>
-                            <div class="col-sm-9">
-                                <select name="redevable_id" class="form-control">
-                                    @foreach ($autorisations as $autorisation )
-                                    <option value="{{ $autorisation->id }}"
-                                        {{ ($payement->autorisation_id == $autorisation->id)?"selected":"" }}>
-                                        {{$autorisation->numero}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">date </label>
-                            <div class="col-sm-9">
-                                <input type="date" name="date" class="form-control" value="{{ $payement->date}}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">quittence</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="quittence" class="form-control"
-                                    value="{{ $payement->quittence}}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label"> date_quittence</label>
-                            <div class="col-sm-9">
-                                <input type="date" name="date_quittence" class="form-control"
-                                    value="{{ $payement->date_quittence}}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label">L'année</label>
-                            <div class="col-sm-9">
-                                <input type="number" name="annee" class="form-control" value="{{ $payement->annee}}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label"> Trimestre</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="trim" class="form-control" value="{{ $payement->trim}}">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                        <button class="btn btn-light" {{ route('payement.index') }}>Cancel</button>
-                    </form>
+                        {{-- <div class="form-group row">
+                                        {{ Form::label('numero', 'Numero Autorisation:',['class' => 'col-sm-3 col-form-label' ])}}
+                        <div class="col-sm-9">
 
+                            {!! Form::select('autorisation_id', $autorisations ,null, ['class' => 'form-control','value'
+                            => '$autorisations->id','name' => 'autorisation_id' ]) !!}
+                        </div>
+                </div> --}}
 
+                <div class="form-group row" hidden>
+                    <label class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-9">
+                        <input type="text" name="autorisation_id" class="form-control" value="{{$autorisation->id}}">
+                    </div>
                 </div>
-            </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Numero</label>
+                    <div class="col-sm-9">
+                        <b type="text" name="autorisation_id" class="form-control">{{$autorisation->numero}}</b>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">date </label>
+                    <div class="col-sm-9">
+                        <input type="date" name="date" class="form-control" placeholder="Saisir La date">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">quittence</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="quittence" class="form-control" placeholder="Votre quittence">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label"> date_quittence</label>
+                    <div class="col-sm-9">
+                        <input type="date" name="date_quittence" class="form-control"
+                            placeholder="Saisir La date De quittance">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label">L'année</label>
+                    <div class="col-sm-9">
+                        <input type="number" name="annee" class="form-control" placeholder="Saisir L`annnée">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label"> Trimestre</label>
+                    <div class="col-sm-9">
+                        <input type="numbre" name="trim" class="form-control" placeholder="Saisir Le trim">
+                    </div>
+                </div>
 
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-light" {{ route('payement.index') }}>Cancel</button>
+                </form>
+
+
+            </div>
         </div>
+
     </div>
+</div>
 </div>
 
 </div>
