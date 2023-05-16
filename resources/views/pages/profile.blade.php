@@ -50,7 +50,7 @@
                         <small class="text-muted d-block">{{ __('Email address')}} </small>
                         <h6>aitmesskine@gmail.com</h6>
                         <small class="text-muted d-block pt-10">{{ __('Phone')}}</small>
-                        <h6>00000000000</h6>
+                        <h6>05789554677</h6>
                         <small class="text-muted d-block pt-10">{{ __('Address')}}</small>
                         <h6>Ait Meloul Agadir Souss Massa</h6>
                         <div class="map-box">
@@ -74,7 +74,7 @@
                             <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#last-month" role="tab" aria-controls="pills-profile" aria-selected="false">{{ __('Profile')}}</a>
                         </li> --}}
                         <li class="nav-item">
-                            <a aria-selected="false"  class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#previous-month" role="tab" aria-controls="pills-setting">{{ __('Informations')}}</a>
+                            <a aria-selected="false"  class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#previous-month" role="tab" aria-controls="pills-setting">{{ __('Changer')}}</a>
                         </li>
                     </ul>
                     {{-- <div class="tab-content" id="pills-tabContent">

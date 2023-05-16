@@ -3,5 +3,6 @@
 	"Login": "Connexion",
 	"All": "Tout",
 	"Unit": "Unité",
-	"here profile": "ici votre profile"
+	"here profile": "ici votre profile",
+    "Logout": "Quitter"
 }

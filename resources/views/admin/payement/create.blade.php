@@ -7,7 +7,7 @@
         <div class="row align-items-end">
             <div class="col-lg-8">
                 <div class="page-header-title">
-                    <i class="ik ik-headphones bg-green"></i>
+                    <i class="ik ik-bar-chart-2"></i>
                     <div class="d-inline">
                         <h5>Payement</h5>
                         <span> Créer un payement </span>
@@ -40,8 +40,7 @@
                         <div class="card-options d-inline-block">
                             <div class="dropdown d-inline-block">
                                 <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                        class="ik ik-more-horizontal"></i></a>
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
 
                             </div>
                         </div>

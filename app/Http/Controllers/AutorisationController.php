@@ -162,16 +162,18 @@ public function imprimer($id){
     $redevable= DB::table('autorisation')
             ->join('redevable', 'autorisation.redevable_id', '=', 'redevable.id')
             ->select('redevable.*','autorisation.*')
-            ->where('autorisation.id',$id)
+            
             ->first();
             // dd($redevable);
     $payement = DB::table('payement')
             ->join('autorisation', 'payement.autorisation_id', '=', 'autorisation.id')
             ->select('autorisation.*','payement.*')
-            ->where('autorisation.id',$id )
-            ->first();
+            ->whereColumn('autorisation.id','=','payement.autorisation_id')
+
+            ->first  ();
 //    $payement = $autorisation->payement();
-        switch ($payement->trim) {
+    // for ($i=date("Y");$i<date("Y")-1;$i++) {
+        switch ($payement->trim ) {
                 case 1:
                     if ($redevable->numerolot==null) {
                         $redevable->numerolot ='------';
@@ -219,6 +221,7 @@ public function imprimer($id){
                     return  view('admin.pdf.index', compact('autorisation', 'redevable', 'payement', 'a', 'b', 'c', 'd'));
                     break;
             }
+    // }
 }
             //view pour ajouter autorisation pour un personne par son id
 public function ajouter($id)
@@ -227,6 +230,20 @@ public function ajouter($id)
         return view('admin.autorisation.ajouter', compact('autorisation'));
 
     }
+public function role(){
+    $auto=DB::table('redevable')
+    ->join('autorisation','redevable.id', '=', 'autorisation.redevable_id')
+    ->join('payement', 'payement.autorisation_id', '=', 'autorisation.id')
+    ->select('payement.*', 'autorisation.*', 'redevable.*')
+    ->where('payement.annee','=',date('Y'))
+    ->distinct('redevable.id','autorisation.id')
+    ->distinct()
+    ->whereColumn('redevable.id', '=', 'autorisation.redevable_id')
+    ->whereColumn('autorisation.id','=','payement.autorisation_id')
+    ->orderBy('redevable.id', 'asc')
+    ->get();
+    return view('admin.pdf.role',compact('auto'));
+}
 
 }
 

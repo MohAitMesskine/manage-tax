@@ -7,7 +7,8 @@
         <div class="row align-items-end">
             <div class="col-lg-8">
                 <div class="page-header-title">
-                    <i class="ik ik-headphones bg-green"></i>
+                    {{-- <i class="ik ik-headphones bg-green"></i> --}}
+                    <i class="ik ik-bar-chart-2"></i>
                     <div class="d-inline">
                         <h5>Payement</h5>
                         <span>View, Voir les payement</span>

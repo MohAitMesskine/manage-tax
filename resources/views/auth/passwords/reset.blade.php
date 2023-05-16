@@ -42,8 +42,8 @@
                         <div class="logo-centered">
                             <a href=""><img width="150" src="{{ asset('img/logo.png')}}" alt=""></a>
                         </div>
-                        <h3>{{ __('Reset Password') }}</h3>
-                        <p>{{ __('Enter your new password.') }}</p>
+                        <h3>{{ __('Reset Mot de Passe') }}</h3>
+                        <p>{{ __('Saisir Nouveau mot De passe ') }}</p>
                         @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -54,7 +54,7 @@
                             @csrf
                             <div class="form-group">
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    placeholder="Your email address" name="email" value="{{ old('email') }}" required>
+                                    placeholder="Votre Email" name="email" value="{{ old('email') }}" required>
                                 <i class="ik ik-mail"></i>
                             </div>
                             @error('email')
@@ -64,7 +64,7 @@
                             @enderror
                             <div class="form-group">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                    placeholder="Password" name="password" required>
+                                    placeholder="Mot de passe" name="password" required>
                                 <i class="ik ik-lock"></i>
                             </div>
                             @error('password')
@@ -73,7 +73,7 @@
                             </span>
                             @enderror
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Confirm Password"
+                                <input type="password" class="form-control" placeholder="Confirmer mot  Passe"
                                     name="password_confirmation" required>
                                 <i class="ik ik-eye-off"></i>
                             </div>
@@ -83,7 +83,7 @@
                         </form>
                         <div class="register">
                             <p>{{ __('Not a member') }}? <a
-                                    href="{{ url('register')}}">{{ __('Create an account') }}</a></p>
+                                    href="{{ url('register')}}">{{ __('Créer Compte') }}</a></p>
                         </div>
                     </div>
                 </div>

@@ -22,21 +22,21 @@
                 </div>
 
                 <div class="nav-item {{ ($segment1 == 'users' || $segment1 == 'roles'||$segment1 == 'permission' ||$segment1 == 'user') ? 'active open' : '' }} has-sub">
-                    <a href="#"><i class="ik ik-user"></i><span>{{ __('Adminstrator')}}</span></a>
+                    <a href="#"><i class="ik ik-user"></i><span>{{ __('Gérer Admin')}}</span></a>
                     <div class="submenu-content">
                         <!-- only those have manage_user permission will get access -->
                         @can('manage_user')
-                        <a href="{{url('users')}}" class="menu-item {{ ($segment1 == 'users') ? 'active' : '' }}">{{ __('Users')}}</a>
-                        <a href="{{url('user/create')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Add User')}}</a>
+                        <a href="{{url('users')}}" class="menu-item {{ ($segment1 == 'users') ? 'active' : '' }}">{{ __('Les Admin')}}</a>
+                        <a href="{{url('user/create')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Ajouter  Admin')}}</a>
                          @endcan
                          <!-- only those have manage_role permission will get access -->
-                        @can('manage_roles')
+                        {{-- @can('manage_roles')
                         <a href="{{url('roles')}}" class="menu-item {{ ($segment1 == 'roles') ? 'active' : '' }}">{{ __('Roles')}}</a>
-                        @endcan
+                        @endcan --}}
                         <!-- only those have manage_permission permission will get access -->
-                        @can('manage_permission')
+                        {{-- @can('manage_permission')
                         <a href="{{url('permission')}}" class="menu-item {{ ($segment1 == 'permission') ? 'active' : '' }}">{{ __('Permission')}}</a>
-                        @endcan
+                        @endcan --}}
                     </div>
                 </div>
 
@@ -125,7 +125,7 @@
                     <a href="#"><i class="ik ik-lock"></i><span>{{ __('Authentication')}}</span></a>
                     <div class="submenu-content">
                         <a href="{{url('login-1')}}" class="menu-item {{ ($segment1 == 'login-1') ? 'active' : '' }}">{{ __('Login')}}</a>
-                        <a href="{{url('register')}}" class="menu-item {{ ($segment1 == 'register-1') ? 'active' : '' }}">{{ __('Register')}}</a>
+                        {{-- <a href="{{url('register')}}" class="menu-item {{ ($segment1 == 'register-1') ? 'active' : '' }}">{{ __('Inscrire')}}</a> --}}
                         <a href="{{url('forgot-password')}}" class="menu-item {{ ($segment1 == 'forgot-password') ? 'active' : '' }}">{{ __('Mot de Passe Oublier')}}</a>
                     </div>
                 </div>

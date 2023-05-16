@@ -33,7 +33,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-4 m-auto">
                         <div class="authentication-form mx-auto">
                             <div class="logo-centered">
-                                <a href="http://radmin.rakibhstu.com"><img height="40" src="{{ asset('img/logo.png') }}" alt="Communite" ></a>
+                                <a href="#"><img height="40" src="{{ asset('img/logo.png') }}" alt="Communite" ></a>
                             </div>
                             <p>Bienvenue  </p>
                             <form method="POST" action="{{ route('login') }}">
@@ -65,15 +65,15 @@
                                     </div>
                                     <div class="col text-right">
                                         <a class="btn text-danger" href="{{url('password/forget')}}">
-                                            {{ __('Forgot Password?') }}
+                                            {{ __('Oublier mot passe ?') }}
                                         </a>
                                     </div>
                                 </div>
                                 <div class="sign-btn text-center">
-                                    <button class="btn btn-custom">Sign In</button>
+                                    <button class="btn btn-custom">Connexion</button>
                                 </div>
                                 <div class="register">
-                                    <p>{{ __('No account?')}} <a href="{{url('register')}}">{{ __('Sign Up')}}</a></p>
+                                    <p>{{ __('pas compte ?')}} <a href="{{url('register')}}">{{ __('Inscrire')}}</a></p>
                                 </div>
 
                             </form>

@@ -14,15 +14,15 @@
                         <span class="input-group-addon search-btn"><i class="ik ik-search"></i></span>
                     </div>
                 </div>
-                <button class="nav-link" title="clear cache">
+                {{-- <button class="nav-link" title="clear cache">
                     <a  href="{{url('clear-cache')}}">
                     <i class="ik ik-battery-charging"></i>
                 </a>
-                </button> &nbsp;&nbsp;
+                </button> &nbsp;&nbsp; --}}
                 <button type="button" id="navbar-fullscreen" class="nav-link"><i class="ik ik-maximize"></i></button>
             </div>
             <div class="top-menu d-flex align-items-center">
-                <div class="dropdown">
+                {{-- <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="notiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-bell"></i><span class="badge bg-danger">3</span></a>
                     <div class="dropdown-menu dropdown-menu-right notification-dropdown" aria-labelledby="notiDropdown">
                         <h4 class="header">{{ __('Notifications')}}</h4>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="footer"><a href="javascript:void(0);">{{ __('See all activity')}}</a></div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="dropdown">
                     <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="{{ asset('img/user.jpg')}}" alt=""></a>

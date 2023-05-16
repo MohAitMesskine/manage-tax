@@ -41,7 +41,7 @@
                     <div class="col col-sm-1">
                         <div class="card-options d-inline-block">
                             <div class="dropdown d-inline-block">
-                                <a href="#" class="btn btn-primary stretched-link">Role</a>
+                                <a target="_blank" href="{{ route('role') }}" class="btn btn-primary stretched-link">Role</a>
                             </div>
                         </div>
 

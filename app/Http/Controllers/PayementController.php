@@ -78,7 +78,6 @@ class PayementController extends Controller
      */
     public function edit(Payement $payement)
     {
- 
         $autorisations= Autorisation::get();
         return view('admin.payement.edit',compact('payement', 'autorisations'));
     }

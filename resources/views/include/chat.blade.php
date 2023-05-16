@@ -4,7 +4,7 @@
             <h6>{{ __('Chat List')}}</h6>
             <form class="mr-t-10">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search for friends ..."> 
+                    <input type="text" class="form-control" placeholder="Search for friends ...">
                     <i class="ik ik-search"></i>
                 </div>
             </form>
@@ -41,7 +41,7 @@
                         <img src="{{ asset('img/users/1.jpg')}}" class="rounded-circle" alt="">
                     </figure><span><span class="name">{{ __('Mason Grant')}}</span>  <span class="username">@masongrant</span> </span>
                 </a>
-                <a href="javascript:void(0)" class="list-group-item" data-chat-user="Shelly Sullivan">
+                <a href="javascri pt:void(0)" class="list-group-item" data-chat-user="Shelly Sullivan">
                     <figure class="user--offline">
                         <img src="{{ asset('img/users/2.jpg')}}" class="rounded-circle" alt="">
                     </figure><span><span class="name">{{ __('Shelly Sullivan')}}</span>  <span class="username">@shelly</span></span>
@@ -54,8 +54,8 @@
 <div class="chat-panel" hidden>
     <div class="card">
         <div class="card-header d-flex justify-content-between">
-            <a href="javascript:void(0);"><i class="ik ik-message-square text-success"></i></a>  
-            <span class="user-name">{{ __('John Doe')}}</span> 
+            <a href="javascript:void(0);"><i class="ik ik-message-square text-success"></i></a>
+            <span class="user-name">{{ __('John Doe')}}</span>
             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
         </div>
         <div class="card-body">

@@ -116,7 +116,7 @@
                                         <label for="role">{{ __('Assign Role')}}<span class="text-red">*</span></label>
                                         {!! Form::select('role', $roles, $user_role->id??'' ,[ 'class'=>'form-control select2', 'placeholder' => 'Select Role','id'=> 'role', 'required'=>'required']) !!}
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="role">{{ __('Permissions')}}</label>
                                         <div id="permission" class="form-group">
                                             @foreach($user->getAllPermissions() as $key => $permission)
@@ -125,13 +125,13 @@
                                                 {{ clean($permission->name, 'titles')}}
                                             </span>
                                             @endforeach
-                                        </div>
+                                        </div> --}}
                                         <input type="hidden" id="token" name="token" value="{{ csrf_token() }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary form-control-right">{{ __('Update')}}</button>
+                                        <button type="submit" class="btn btn-primary form-control-right">{{ __('Changer')}}</button>
                                     </div>
                                 </div>
                             </div>

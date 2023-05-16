@@ -69,6 +69,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('autorisation', AutorisationController::class);
     Route::get('Autorisation/search', [AutorisationController::class,'search'])->name('search');
     Route::get('/imprimer/{id?}', [AutorisationController::class,'imprimer'])->name('imprimer');
+    Route::get('/role', [AutorisationController::class,'role'])->name('role');
     Route::get('autorisation/ajouter/{id?}', [AutorisationController::class,'ajouter'])->name('ajouter');
     //dashboard
     Route::resource('dashboard', DashboardController::class);
